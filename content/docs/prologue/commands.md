@@ -1,106 +1,43 @@
 ---
 title: "Commands"
-description: "Doks comes with commands for common tasks."
-lead: "Doks comes with commands for common tasks."
+description: "Commands for jobs"
+lead: "Example commands for create, get, delete jobs."
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2020-10-13T15:21:01+02:00
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "prologue"
-weight: 130
+weight: 500
 toc: true
 ---
+### Job kind
+- tfjob
+- pytorchjob
+- marsjob
+- xgboostjob
 
-{{< alert icon="💡" text="You can change the commands in the scripts section of `./package.json`." >}}
+These kinds can be used in the kubectl command.
 
-## start
-
-Start local development server:
-
-{{< btn-copy text="npm run start" >}}
+### Submit
 
 ```bash
-npm run start
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/example/tf/tf_job_mnist.yaml
+```
+### List
+```bash
+kubectl get tfjobs -n kubedl
 ```
 
-## lint
-
-Check scripts, styles, and markdown for errors:
-
-{{< btn-copy text="npm run lint" >}}
+### Get
 
 ```bash
-npm run lint
+kubectl describe tfjob mnist -n kubedl
 ```
 
-### scripts
-
-Check scripts for errors:
-
-{{< btn-copy text="npm run lint:scripts" >}}
+### Delete
 
 ```bash
-npm run lint:scripts [-- --fix]
-```
-
-### styles
-
-Check styles for errors:
-
-{{< btn-copy text="npm run lint:styles" >}}
-
-```bash
-npm run lint:styles [-- --fix]
-```
-
-### markdown
-
-Check markdown for errors:
-
-{{< btn-copy text="npm run lint:markdown" >}}
-
-```bash
-npm run lint:markdown [-- --fix]
-```
-
-## clean
-
-Delete temporary directories:
-
-{{< btn-copy text="npm run clean" >}}
-
-```bash
-npm run clean
-```
-
-## build
-
-Build production website:
-
-{{< btn-copy text="npm run build" >}}
-
-```bash
-npm run build
-```
-
-### functions
-
-Build Lambda functions:
-
-{{< btn-copy text="npm run build:functions" >}}
-
-```bash
-npm run build:functions
-```
-
-### preview
-
-Build production website including draft and future content:
-
-{{< btn-copy text="npm run build:preview" >}}
-
-```bash
-npm run build:preview
+kubectl delete tfjob mnist -n kubedl
 ```

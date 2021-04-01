@@ -4,9 +4,9 @@ description: ""
 lead: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
-draft: true
+draft: flase
 images: []
-menu: 
+menu:
   docs:
     parent: ""
 weight: 999

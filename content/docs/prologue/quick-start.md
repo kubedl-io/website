@@ -1,7 +1,7 @@
 ---
 title: "Quick Start"
-description: "One page summary of how to start a new Doks project."
-lead: "One page summary of how to start a new Doks project."
+description: "Run a simple MNist Tensorflow job with KubeDL."
+lead: "Run a simple MNist Tensorflow job with KubeDL."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -9,52 +9,29 @@ images: []
 menu:
   docs:
     parent: "prologue"
-weight: 110
+weight: 400
 toc: true
 ---
 
-## Requirements
-
-Doks uses npm to install dependencies and run commands. Installing npm is pretty simple. Download and install [Node.js](https://nodejs.org/) (it includes npm) for your platform.
-
-## Start a new Doks project
-
-Create a new site, change directories, install dependencies, and start development server.
-
-### Create a new site
-
-{{< btn-copy text="git clone https://github.com/h-enk/doks.git my-doks-site" >}}
+## Submit the TensorFlow job
 
 ```bash
-git clone https://github.com/h-enk/doks.git my-doks-site
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/example/tf/tf_job_mnist.yaml
 ```
 
-### Change directories
-
-{{< btn-copy text="cd my-doks-site" >}}
+### Get job status
 
 ```bash
-cd my-doks-site
+kubectl get tfjobs -n kubedl
+kubectl describe tfjob mnist -n kubedl
 ```
 
-### Install dependencies
-
-{{< btn-copy text="npm install" >}}
+### Delete the job
 
 ```bash
-npm install
+kubectl delete tfjob mnist -n kubedl
 ```
-
-### Start development server
-
-{{< btn-copy text="npm run start" >}}
-
-```bash
-npm run start
-```
-
-Doks will start the Hugo development webserver accessible by default at `http://localhost:1313`. Saved changes will live reload in the browser.
 
 ## Other commands
 
-Doks comes with commands for common tasks. [Commands →]({{< ref "commands" >}})
+[Commands →]({{< ref "commands" >}})

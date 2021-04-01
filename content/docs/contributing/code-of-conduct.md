@@ -1,5 +1,17 @@
-# Contributor Covenant Code of Conduct
-
+---
+title: "Code of Conduct"
+description: "code of conduct"
+lead: ""
+date: 2021-04-01T14:54:39-07:00
+lastmod: 2021-04-01T14:54:39-07:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "contributing"
+weight: 300
+toc: true
+---
 ## Our Pledge
 
 We as members, contributors, and leaders pledge to make participation in our
