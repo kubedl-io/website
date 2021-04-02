@@ -30,7 +30,7 @@ npm run start
 ```
 
 ### 4. Make your content changes
-The result will be refreshed in real-time at localhost:1313
+The result will be refreshed in real-time at http://localhost:1313
 
 ## Other commands
 
