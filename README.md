@@ -1,7 +1,9 @@
 ## Website
+https://kubedl.io
+
 This website is built using [Hugo](https://gohugo.io/) and uses the [Doks hugo theme](https://getdoks.org/).
 
-This git repo is based off the example [Doks git repo](https://github.com/h-enk/doks-gh-pages).
+This git repo is based off the example [Doks git repo](https://github.com/h-enk/doks).
 
 ## Requirements
 
