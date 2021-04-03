@@ -41,9 +41,9 @@ Install KubeDL using YAML files. [Go →]({{< ref "quick-start" >}})
 
 Get instructions on how to accomplish common tasks with KubeDL. [Recipes →](https://getdoks.org/docs/recipes/project-configuration/)
 
-## Reference Guides
+## Reference
 
-References for apis, metrics etc. [Reference Guides →]({{< ref "references" >}})
+References for apis, metrics etc. [Reference →]({{< ref "references" >}})
 
 ## Contributing
 
