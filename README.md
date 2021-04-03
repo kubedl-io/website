@@ -46,3 +46,13 @@ Doks comes with [commands](https://getdoks.org/docs/prologue/commands/) for comm
 - [Hugo Forums](https://discourse.gohugo.io/)
 - [Doks Discussions](https://github.com/h-enk/doks/discussions)
 
+## FAQ
+
+### `index.md` vs `_index.md`
+Throughout the repo, you will see `index.md` and `_index.md` files.
+
+`_index.md` is added in the `branch`  folder, e.g. the `prologue/_index.md` lists the files under that `prologue` menu.
+
+`index.md` is added in the `leaf` foler, e.g. `workloads/mars/index.md`.
+
+See the [doc](https://gohugo.io/content-management/page-bundles/#readout) for details

@@ -3,23 +3,23 @@
 ## Homepage
 title = "KubeDL"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+titleAddition = "KubeDL helps you run deep learning workloads on Kubernetes."
+description = "KubeDL is a unififed operator helping you run multiple kinds of deep learning training workloads on Kubernetes."
 
 ## Open Graph + Twitter Cards
 images = ["kubedlicon.png"]
-twitterSite = "henkverlinde"
-twitterCreator = "henkverlinde"
-facebookAuthor = "verlinde.henk"
-facebookPublisher = "verlinde.henk"
+#twitterSite = "henkverlinde"
+#twitterCreator = "henkverlinde"
+#facebookAuthor = "verlinde.henk"
+#facebookPublisher = "verlinde.henk"
 ogLocale = "en_US"
 
 ## JSON-LD
 schemaType = "Organization"
-schemaLogo = "logo-doks.png"
-schemaTwitter = "https://twitter.com/henkverlinde"
-schemaLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaGitHub = "https://github.com/h-enk"
+schemaLogo = "kubedlicon.png"
+#schemaTwitter = "https://twitter.com/henkverlinde"
+#schemaLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
+schemaGitHub = "https://github.com/alibaba/kubedl"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -40,11 +40,11 @@ lqipWidth = "20x"
 
 # Alert
 alert = false
-alertText = "Like Doks? <a class=\"alert-link\" href=\"https://github.com/h-enk/doks/stargazers\">Star on GitHub</a>. Thanks!</a>"
+alertText = "Like KubeDL? <a class=\"alert-link\" href=\"https://github.com/alibaba/kubedl/stargazers\">Star on GitHub</a>. Thanks!</a>"
 
 # Edit Page
-docsRepo = "https://github.com/h-enk/doks"
-editPage = false
+docsRepo = "https://github.com/jian-he/website"
+editPage = true
 
 [options]
   lazySizes = true

@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
-draft: flase
+draft: false
 images: []
 menu:
   docs:

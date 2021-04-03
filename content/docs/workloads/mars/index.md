@@ -30,7 +30,7 @@ Run `mars` job on kubernetes natively.
 
 ### 1. Deploy KubeDL
 
-Follow the [installation tutorial](https://github.com/alibaba/kubedl#getting-started) in README and deploy `kubedl` operator to cluster.
+Follow the [installation tutorial]({{< ref introduction >}}).
 
 ### 2. Apply Mars CRD
 
