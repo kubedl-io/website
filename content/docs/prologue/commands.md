@@ -22,22 +22,27 @@ These kinds can be used in the kubectl command.
 
 ### Submit
 
+{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/example/tf/tf_job_mnist.yaml" >}}
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/example/tf/tf_job_mnist.yaml
 ```
 ### List
+
+{{< btn-copy text="kubectl get tfjobs -n kubedl" >}}
 ```bash
 kubectl get tfjobs -n kubedl
 ```
 
 ### Get
 
+{{< btn-copy text="kubectl describe tfjob mnist -n kubedl">}}
 ```bash
 kubectl describe tfjob mnist -n kubedl
 ```
 
 ### Delete
 
+{{< btn-copy text="kubectl delete tfjob mnist -n kubedl">}}
 ```bash
 kubectl delete tfjob mnist -n kubedl
 ```

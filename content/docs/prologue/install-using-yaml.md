@@ -16,6 +16,7 @@ toc: true
 
 ## Install CRDs
 
+
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/kubeflow.org_pytorchjobs.yaml
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/kubeflow.org_tfjobs.yaml
@@ -26,6 +27,7 @@ kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/
 
 A single yaml file including everything: deployment, rbac etc.
 
+{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml" >}}
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml
 ```

@@ -15,6 +15,8 @@ toc: true
 
 ## Install Helm
 Helm is a package manager for Kubernetes. You can install helm with command below on MacOS
+
+{{< btn-copy text="brew install helm">}}
 ```bash
 brew install helm
 ```
@@ -22,12 +24,15 @@ Check the [helm website](https://helm.sh/docs/intro/install/) for more details.
 
 ## Install KubeDL
 From the root directory, run
+
+{{< btn-copy text="helm install kubedl ./helm/kubedl">}}
 ```bash
 helm install kubedl ./helm/kubedl
 ```
 
 You can override default values defined in `./helm/kubedl/values.yaml` with `--set` flag, for example:
 
+{{< btn-copy text="helm install kubedl ./helm/kubedl --set kubedlSysNamespace=kube-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi">}}
 ```bash
 helm install kubedl ./helm/kubedl --set kubedlSysNamespace=kube-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi
 ```

@@ -50,7 +50,7 @@
   post = "v0.1.0"
   weight = 20
 
-# [[footer]]
-#   name = "Privacy"
-#   url = "/privacy-policy/"
-#   weight = 10
+ [[footer]]
+   name = "Code of Conduct"
+   url = "/docs/contributing/code-of-conduct"
+   weight = 10
