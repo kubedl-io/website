@@ -1,7 +1,7 @@
 ---
 title: "File Sync"
-description: "Sync files on container launch"
-lead: "Sync files on container launch"
+description: "Sync files on container launch."
+lead: "Sync files on container launch."
 date: 2021-03-29T23:04:09-07:00
 lastmod: 2021-03-29T23:04:09-07:00
 draft: false
