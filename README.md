@@ -32,6 +32,11 @@ npm run start
 ### 4. Make your content changes
 The result will be refreshed in real-time at http://localhost:1313
 
+### 5. Add a file
+For example:
+```bash
+hugo new docs/recipes/hostnetwork.md
+```
 ## Other commands
 
 Doks comes with [commands](https://getdoks.org/docs/prologue/commands/) for common tasks.

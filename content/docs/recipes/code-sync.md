@@ -1,7 +1,7 @@
 ---
-title: "Run Custom Code On Demand"
-description: "Run custom code on demand"
-lead: ""
+title: "File Sync"
+description: "Sync files on container launch"
+lead: "Sync files on container launch"
 date: 2021-03-29T23:04:09-07:00
 lastmod: 2021-03-29T23:04:09-07:00
 draft: false
@@ -13,7 +13,7 @@ weight: 150
 toc: true
 ---
 
-KubeDL supports running jobs with downloading custom code on demand.
+KubeDL supports syncing files from remote on container launch.
 User can modify the code, reference the code repository and run the jobs without re-building the image every time to include the modified code.
 
 Currently, only support downloading from github. The implementation is pluggable and can easily support other distributed filesystem like HDFS.
