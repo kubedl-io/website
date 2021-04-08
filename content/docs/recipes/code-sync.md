@@ -41,7 +41,7 @@ rather than the git repo's web url.
 
 A full list of supported options are:
 
-```json5
+```json
 "source": "https://github.com/sample/sample.git",  // code source (required).
 "image": "xxx",     // the image to execute the git-sync logic (optional).
 "rootPath": "xxx",  // the path to save downloaded files (optional).
