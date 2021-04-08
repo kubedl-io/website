@@ -16,6 +16,9 @@ toc: true
 - tfjob
 - pytorchjob
 - marsjob
+- mpijob
+- xdljob
+- elasticdljob
 - xgboostjob
 
 These kinds can be used in the kubectl command.
