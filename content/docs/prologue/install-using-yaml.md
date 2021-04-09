@@ -18,18 +18,18 @@ toc: true
 
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/kubeflow.org_pytorchjobs.yaml
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/kubeflow.org_tfjobs.yaml
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/xgboostjob.kubeflow.org_xgboostjobs.yaml
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/kubedl.io_marsjobs.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubeflow.org_pytorchjobs.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubeflow.org_tfjobs.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/xgboostjob.kubeflow.org_xgboostjobs.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubedl.io_marsjobs.yaml
 ```
 ## Install KubeDL operator
 
 A single yaml file including everything: deployment, rbac etc.
 
-{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml" >}}
+{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/manager/all_in_one.yaml" >}}
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/manager/all_in_one.yaml
 ```
 
 The official KubeDL operator image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).

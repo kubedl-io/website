@@ -37,7 +37,7 @@ Follow the [installation tutorial]({{< ref introduction >}}).
 `Mars` CRD(CustomResourceDefinition) manifest file describes the structure of a mars job spec. Run the following to apply the CRD:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/crd/bases/kubedl.io_marsjobs.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubedl.io_marsjobs.yaml
 ```
 
 ### 3. Create a Mars Job

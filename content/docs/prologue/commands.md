@@ -25,9 +25,9 @@ These kinds can be used in the kubectl command.
 
 ### Submit
 
-{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/example/tf/tf_job_mnist.yaml" >}}
+{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/example/tf/tf_job_mnist.yaml" >}}
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/example/tf/tf_job_mnist.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/example/tf/tf_job_mnist.yaml
 ```
 ### List
 
