@@ -48,7 +48,3 @@ docker push <your_image_name>
 ```
 Check the `Makefile` under github root directory for more details
 
-To develop/debug KubeDL controller manager, please check the [debug guide]({{< ref "develop-guide" >}}).
-
-
-
