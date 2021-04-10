@@ -16,14 +16,13 @@ toc: true
 
 ## Install CRDs
 
+From git root directory:
 
+{{< btn-copy text="kubectl apply -f helm/kubedl/crds/" >}}
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubeflow.org_pytorchjobs.yaml
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubeflow.org_tfjobs.yaml
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/xgboostjob.kubeflow.org_xgboostjobs.yaml
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubedl.io_marsjobs.yaml
+kubectl apply -f helm/kubedl/crds/
 ```
-## Install KubeDL operator
+## Install KubeDL controller
 
 A single yaml file including everything: deployment, rbac etc.
 
@@ -31,8 +30,9 @@ A single yaml file including everything: deployment, rbac etc.
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/manager/all_in_one.yaml
 ```
+KubeDL controller is installed under `kubedl-system` namespace. Check its pod logs running properly.
 
-The official KubeDL operator image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).
+The official KubeDL controller image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).
 
 ## Enable specific job Kind
 
