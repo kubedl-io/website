@@ -43,3 +43,5 @@ spec:
               image: kubedl/pytorch-dist-example
               imagePullPolicy: Always
 ```
+## Spec
+Check the CRD definition. [Go ->](https://github.com/alibaba/kubedl/blob/master/apis/training/v1alpha1/pytorchjob_types.go)

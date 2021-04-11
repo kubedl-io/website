@@ -44,7 +44,7 @@ export IMG=kubedl/kubedl:v0.2.0 && make docker-build
 
 ### Push the image
 
-{{< btn-copy text="docker push kubedl/kubedl:v0.2.0 >}}
+{{< btn-copy text="docker push kubedl/kubedl:v0.2.0" >}}
 ```bash
 docker push kubedl/kubedl:v0.2.0
 ```

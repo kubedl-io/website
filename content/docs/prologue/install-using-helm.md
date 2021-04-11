@@ -30,13 +30,14 @@ From the root directory, run
 helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system
 ```
 
-You can override default values defined in `./helm/kubedl/values.yaml` with `--set` flag, for example:
+You can override default values defined in [values.yaml](https://github.com/alibaba/kubedl/blob/master/helm/kubedl/values.yaml) with `--set` flag.
+For example, set the custom cpu/memory resource:
 
 {{< btn-copy text="helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi">}}
 ```bash
 helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system  --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi
 ```
-Helm will render templates and apply them to cluster and you are good to go :)
+Helm will install CRDs and KubeDL controller under `kubedl-system` namespace.
 
 ## Uninstall KubeDL
 {{< btn-copy text="helm uninstall kubedl -n kubedl-system">}}

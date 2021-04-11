@@ -227,3 +227,5 @@ b.execute()  # submit tensor to cluster
 df = md.DataFrame(a).sum()
 df.execute()  # submit DataFrame to cluster
 ```
+## Spec
+Check the CRD definition. [Go ->](https://github.com/alibaba/kubedl/blob/master/apis/training/v1alpha1/marsjob_types.go)

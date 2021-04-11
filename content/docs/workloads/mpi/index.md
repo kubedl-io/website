@@ -13,3 +13,5 @@ weight: 999
 toc: true
 ---
 
+## Spec
+Check the CRD definition. [Go ->](https://github.com/alibaba/kubedl/blob/master/apis/training/v1alpha1/mpijob_types.go)

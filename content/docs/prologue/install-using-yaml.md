@@ -31,7 +31,7 @@ A single yaml file including everything: deployment, rbac etc.
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml
 ```
-KubeDL controller is installed under `kubedl-system` namespace. Check its pod logs running properly.
+KubeDL controller is installed under `kubedl-system` namespace.
 
 The official KubeDL controller image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).
 

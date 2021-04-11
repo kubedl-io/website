@@ -53,3 +53,6 @@ spec:
                 path: /tmp/data
                 type: DirectoryOrCreate
 ```
+
+## Spec
+Check the CRD definition. [Go ->](https://github.com/alibaba/kubedl/blob/master/apis/training/v1alpha1/tfjob_types.go)
