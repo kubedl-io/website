@@ -35,16 +35,17 @@ make manifests
 ```
 ### Build the docker image
 
-{{< btn-copy text="export IMG=<your_image_name> && make docker-build" >}}
+Replace the image name to your own image
+
+{{< btn-copy text="export IMG=kubedl/kubedl:v0.2.0 && make docker-build" >}}
 ```bash
-export IMG=<your_image_name> && make docker-build
+export IMG=kubedl/kubedl:v0.2.0 && make docker-build
 ```
 
 ### Push the image
 
-{{< btn-copy text="docker push <your_image_name>" >}}
+{{< btn-copy text="docker push kubedl/kubedl:v0.2.0 >}}
 ```bash
-docker push <your_image_name>
+docker push kubedl/kubedl:v0.2.0
 ```
 Check the `Makefile` under github root directory for more details
-

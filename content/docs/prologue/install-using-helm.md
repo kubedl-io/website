@@ -25,19 +25,29 @@ Check the [helm website](https://helm.sh/docs/intro/install/) for more details.
 ## Install KubeDL
 From the root directory, run
 
-{{< btn-copy text="helm install kubedl ./helm/kubedl">}}
+{{< btn-copy text="helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system">}}
 ```bash
-helm install kubedl ./helm/kubedl
+helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system
 ```
 
 You can override default values defined in `./helm/kubedl/values.yaml` with `--set` flag, for example:
 
-{{< btn-copy text="helm install kubedl ./helm/kubedl --set kubedlSysNamespace=kube-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi">}}
+{{< btn-copy text="helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi">}}
 ```bash
-helm install kubedl ./helm/kubedl --set kubedlSysNamespace=kube-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi
+helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system  --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi
+```
+Helm will render templates and apply them to cluster and you are good to go :)
+
+## Uninstall KubeDL
+{{< btn-copy text="helm uninstall kubedl -n kubedl-system">}}
+```bash
+helm uninstall kubedl -n kubedl-system
 ```
 
-Helm will render templates and apply them to cluster and you are good to go :)
+## Delete CRDs
+```bash
+kubectl delete crd elasticdljobs.training.kubedl.io marsjobs.training.kubedl.io mpijobs.training.kubedl.io pytorchjobs.training.kubedl.io tfjobs.training.kubedl.io xdljobs.training.kubedl.io xgboostjobs.training.kubedl.io
+```
 
 ## Enable specific job Kind
 

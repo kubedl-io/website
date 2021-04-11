@@ -16,12 +16,13 @@ toc: true
 
 ## Install CRDs
 
-From git root directory:
+From [git root directory](https://github.com/alibaba/kubedl), run
 
 {{< btn-copy text="kubectl apply -f helm/kubedl/crds/" >}}
 ```bash
 kubectl apply -f helm/kubedl/crds/
 ```
+
 ## Install KubeDL controller
 
 A single yaml file including everything: deployment, rbac etc.
@@ -33,6 +34,18 @@ kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/
 KubeDL controller is installed under `kubedl-system` namespace. Check its pod logs running properly.
 
 The official KubeDL controller image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).
+
+## Uninstall KubeDL controller
+
+{{< btn-copy text="kubectl delete namespace kubedl-system" >}}
+```bash
+kubectl delete namespace kubedl-system
+```
+
+## Delete CRDs
+```bash
+kubectl delete crd elasticdljobs.training.kubedl.io marsjobs.training.kubedl.io mpijobs.training.kubedl.io pytorchjobs.training.kubedl.io tfjobs.training.kubedl.io xdljobs.training.kubedl.io xgboostjobs.training.kubedl.io
+```
 
 ## Enable specific job Kind
 
