@@ -16,7 +16,7 @@ toc: true
 ## Submit the TensorFlow job
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/example/tf/tf_job_mnist.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/example/tf/tf_job_mnist.yaml
 ```
 
 ### Get job status

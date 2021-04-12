@@ -27,9 +27,9 @@ kubectl apply -f helm/kubedl/crds/
 
 A single yaml file including everything: deployment, rbac etc.
 
-{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml" >}}
+{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/config/manager/all_in_one.yaml" >}}
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/master/config/manager/all_in_one.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/config/manager/all_in_one.yaml
 ```
 KubeDL controller is installed under `kubedl-system` namespace.
 

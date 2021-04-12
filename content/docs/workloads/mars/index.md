@@ -37,7 +37,7 @@ Follow the [installation tutorial]({{< ref introduction >}}).
 `Mars` CRD(CustomResourceDefinition) manifest file describes the structure of a mars job spec. Run the following to apply the CRD:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/crd/bases/kubedl.io_marsjobs.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/config/crd/bases/training.kubedl.io_marsjobs.yaml
 ```
 
 ### 3. Create a Mars Job
@@ -45,7 +45,7 @@ kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.2.0/config/
 Create a YAML spec that describes the requirements of a MarsJob such as the worker, scheduler, WebService like below
 
 ```yaml
-apiVersion: kubedl.io/v1alpha1
+apiVersion: training.kubedl.io/v1alpha1
 kind: MarsJob
 metadata:
   name: mars-test-demo
@@ -187,7 +187,7 @@ Mars supports running jobs in different memory usage scenarios. For example, swa
 users can set above options in `job.spec.memoryTuningPolicy` field:
 
 ```yaml
-apiVersion: kubedl.io/v1alpha1
+apiVersion: training.kubedl.io/v1alpha1
 kind: MarsJob
 metadata:
   name: mars-test-demo
