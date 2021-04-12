@@ -98,6 +98,7 @@ spec:
 
 
 ## MySql Config
+The configs defined in the aforementioned `secret`:
 
 | Config Name   |   Description    |
 |------------- |-------------|

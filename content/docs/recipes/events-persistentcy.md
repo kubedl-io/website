@@ -101,6 +101,8 @@ spec:
               key: logStore
 ```
 ##  Aliyun-sls Config
+The configs defined in the aforementioned `secret`:
+
 | Config Name   |   Description    |
 |------------- |-------------|
 | endpoint | The sls endpoint to connect to |
