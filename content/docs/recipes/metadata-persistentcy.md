@@ -13,8 +13,6 @@ weight: 500
 toc: true
 ---
 
-# Metadata Persistency
-
 ## Background
 
 As AI platform builders, it is quite inefficient to directly query metadata(jobs/pods) from ApiServer for following reasons:

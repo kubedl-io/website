@@ -13,8 +13,6 @@ weight: 600
 toc: true
 ---
 
-# Events Persistency
-
 ## Background
 
 Similar to `metadata persistency`, platform builders may also wants to persist job-related events to external system(usually time-series databases), 
