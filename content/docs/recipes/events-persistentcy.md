@@ -13,11 +13,10 @@ weight: 600
 toc: true
 ---
 
-## Background
-
 Kubernetes object events are persisted for only 3 hours by default.
-In addition to job meta persistency, KubeDL also supports persisting Kubernetes events into external storage system (usually time-series databases).
-Currently, all Kubernetes events will be watched by KubeDL and persisted into external storage.
+In addition to job meta persistency, KubeDL also supports persisting Kubernetes events into external storage system (usually time-series databases) to outlive api-server state.
+Currently, KubeDL watches all Kubernetes events and persist them into external storage.
+
 Currently, only `aliyun-sls` is supported.
 
 
@@ -41,7 +40,7 @@ stringData:
   logStore: kubedl
 ```
 
-2.Update the KubeDL Deployment spec to include `--event-storage aliyun-sls` in the startup flag and reference the credentials
+2. Update the KubeDL Deployment spec to include `--event-storage aliyun-sls` in the startup flag and reference the credentials
   via environment variables.
 
 ```yaml
@@ -101,14 +100,14 @@ spec:
               name: kubedl-sls-config
               key: logStore
 ```
-##  `Aliyun-sls` Config
+##  Aliyun-sls Config
 | Config Name   |   Description    |
 |------------- |-------------|
-| endpoint | the sls endpoint to connect to |
+| endpoint | The sls endpoint to connect to |
 | accessKey | The alicloud account access key|
 | accessSecret | The alicloud account access secret. |
-| project | sls project for storing the events|
-| logStore | sls log store in the project for storing the events |
+| project | The sls project for storing the events|
+| logStore | The sls log store in the project for storing the events |
 
 ## Contributions
 

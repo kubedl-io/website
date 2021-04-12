@@ -13,10 +13,11 @@ weight: 500
 toc: true
 ---
 
-## Background
-
 Kubernetes api-server typically stores job information for a limited lifespan. KubeDL has built-in support to persist the
-job metadata into external storage to outlive api-server state. Currently, only `Mysql` is supported.
+job metadata into external storage to outlive api-server state.
+The KubeDL controller will persist the job metadata during the lifecycle of job such as job and pod creation/deletion.
+
+Currently, only `Mysql` is supported.
 
 ## DB Schema
 
@@ -41,7 +42,7 @@ stringData:
 ```
 
 2. Update the Kubedl Deployment spec to include `--object-storage mysql` in the startup flag and reference the DB credentials
-via environment variables. The KubeDL controller will read the env to set up connection with DB.
+via environment variables. The KubeDL controller uses the env to set up connection with DB.
 
 ```yaml
 apiVersion: apps/v1
@@ -95,9 +96,8 @@ spec:
               key: password
 ```
 
-3. The KubeDL controller will persist the job metadata during the lifecycle of job such as job and pod creation/deletion.
 
-## `MySql` Config
+## MySql Config
 
 | Config Name   |   Description    |
 |------------- |-------------|
