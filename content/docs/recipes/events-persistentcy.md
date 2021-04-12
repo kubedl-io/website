@@ -15,15 +15,16 @@ toc: true
 
 ## Background
 
-Similar to `metadata persistency`, platform builders may also wants to persist job-related events to external system(usually time-series databases), 
-since events can only be preserved for 3 hours by default in kubernetes, and events sinks helps a lot in debugging and tracing.
-`KubeDL` also provides pluggable facilities to persist events to customized external storage system, such as `aliyun-sls`, `graphite`...and `aliyun-sls` plugin has now available.
+Kubernetes object events are persisted for only 3 hours by default.
+In addition to job meta persistency, KubeDL also supports persisting Kubernetes events into external storage system (usually time-series databases).
+Currently, all Kubernetes events will be watched by KubeDL and persisted into external storage.
+Currently, only `aliyun-sls` is supported.
+
 
 ## How To Use
+Below is an example for seting up KubeDL to persist events into [alicloud simple log service](https://cn.aliyun.com/product/sls).
 
-Same as `metadata persistency`, users should set-up their storage system certificates first.
-
-1. apply certificates leveraging `Service` or `ConfigMap`, `Service` is strongly recommended for security.
+1. Set up credentials. Create a Secret:
 
 ```yaml
 apiVersion: v1
@@ -40,8 +41,8 @@ stringData:
   logStore: kubedl
 ```
 
-2. referent certificates stored in `Secret` by amending `KubeDL` deployment, then main process can load certificates by environments.
-3. at this point, we just need to add a startup flag in `KubeDL` deployment to declare which events plugin to be activated, a rendered yaml is down below:
+2.Update the KubeDL Deployment spec to include `--event-storage aliyun-sls` in the startup flag and reference the credentials
+  via environment variables.
 
 ```yaml
 apiVersion: apps/v1
@@ -100,8 +101,15 @@ spec:
               name: kubedl-sls-config
               key: logStore
 ```
+##  `Aliyun-sls` Config
+| Config Name   |   Description    |
+|------------- |-------------|
+| endpoint | the sls endpoint to connect to |
+| accessKey | The alicloud account access key|
+| accessSecret | The alicloud account access secret. |
+| project | sls project for storing the events|
+| logStore | sls log store in the project for storing the events |
 
 ## Contributions
 
-`KubeDL` now supports `aliyun-sls` events plugin only, if you have needs on other storage protocols,
-contributions are welcomed, and developers just need to implement an event storage plugin interface :)
+Currently, only `aliyun-sls` is supported. You are welcome to contribute your own storage plugin.

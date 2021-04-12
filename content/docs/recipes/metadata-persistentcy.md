@@ -15,27 +15,21 @@ toc: true
 
 ## Background
 
-As AI platform builders, it is quite inefficient to directly query metadata(jobs/pods) from ApiServer for following reasons:
+Kubernetes api-server typically stores job information for a limited lifespan. KubeDL has built-in support to persist the
+job metadata into external storage to outlive api-server state. Currently, only `Mysql` is supported.
 
-- intensive queries may cause ApiServer jitters and does negative impact on cluster reliability.
-- metadata will be permanently lost once job was deleted from etcd.
-- etcd will possibly be the bottleneck of whole system.
-
-To address this, `KubeDL` provides pluggable facilities for developers/users to persist their metadata to customized external storage system, 
-such as `mysql`, `postgresql`, `redis`... and `mysql` storage plugin has now available.
+## DB Schema
 
 ## How To Use
+Below is an example to setup KubeDL to use `Mysql` as the persistency DB.
 
-To enable metadata persistency, users should set-up their storage system certificates first, hence `KubeDL` will be able to connect to.
-Take `mysql` as a guideline, we can enable metadata persistency by following steps:
-
-1. apply certificates leveraging `Service` or `ConfigMap`, `Service` is strongly recommended for security.
+1. Set up credentials for KubeDL to connect to DB. Create a `Secret` object like below:
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: kubedlpro-mysql-config
+  name: kubedl-mysql-config
   namespace: kubedl-system
 type: Opaque
 stringData:
@@ -46,8 +40,8 @@ stringData:
   port: "3306"
 ```
 
-2. referent certificates stored in `Secret` by amending `KubeDL` deployment, then main process can load certificates by environments.
-3. at this point, we just need to add a startup flag in `KubeDL` deployment to declare which storage plugin to be activated, a rendered yaml is down below: 
+2. Update the Kubedl Deployment spec to include `--object-storage mysql` in the startup flag and reference the DB credentials
+via environment variables. The KubeDL controller will read the env to set up connection with DB.
 
 ```yaml
 apiVersion: apps/v1
@@ -101,9 +95,18 @@ spec:
               key: password
 ```
 
-now a persistent controller driven by `mysql` has been enabled and you may check the data meets expectations or not in your storage service.
+3. The KubeDL controller will persist the job metadata during the lifecycle of job such as job and pod creation/deletion.
+
+## `MySql` Config
+
+| Config Name   |   Description    |
+|------------- |-------------|
+| host | Mysql host name |
+| dbName | DB name|
+| user | User name|
+| password | User password|
+| port | The mysql DB port to connect to |
 
 ## Contributions
 
-`KubeDL` now supports `mysql` storage plugin only, if you have needs on other storage protocols like `mangodb`, `influxdb`, 
-contributions are welcomed, and developers just need to implement a storage plugin interface :)
+Currently, only `mysql` is supported. You are welcome to contribute your own storage plugin.
