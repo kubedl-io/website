@@ -41,7 +41,7 @@ stringData:
   port: "3306"
 ```
 
-2. Update the Kubedl Deployment spec to include `--object-storage mysql` in the startup flag and reference the DB credentials
+2. Update the Kubedl Deployment spec to include `--meta-storage mysql` in the startup flag and reference the DB credentials
 via environment variables. The KubeDL controller uses the env to set up connection with DB.
 
 ```yaml
@@ -67,7 +67,7 @@ spec:
         imagePullPolicy: Always
         name: kubedl-manager
         args:
-        - "--object-storage"
+        - "--meta-storage"
         - "mysql"
         env:
         - name: MYSQL_HOST
