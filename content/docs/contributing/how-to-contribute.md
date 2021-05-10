@@ -14,7 +14,7 @@ toc: true
 ---
 # Contributing to KubeDL
 
-Welcome to KubeDL! 
+Welcome to KubeDL!
 We encourage you to help out by reporting issues, improving documentation, fixing bugs, or adding new features.
 Please also take a look at our code of conduct, which details how contributors are expected to conduct themselves as part of the KubeDL community.
 
@@ -105,21 +105,44 @@ Here are some dependents with specific version:
 - Kubernetes: v1.12+
 
 ### Developing guide
+KubeDL uses [KubeBuilder](https://github.com/kubernetes-sigs/kubebuilder) for scaffolding code.
 
 There's a `Makefile` in the root folder which describes the options to build and install. Here are some common ones:
 
+#### Build the binary
+
+{{< btn-copy text="make manager" >}}
 ```bash
-# Build the controller manager binary
 make manager
+```
+#### Run the tests
 
-# Run the tests
+{{< btn-copy text="make test" >}}
+```bash
 make test
+```
+#### Generate manifests: CRD, RBAC YAML files etc
 
-# Generate manifests e.g. CRD, RBAC YAML files etc
+{{< btn-copy text="make manifests" >}}
+```bash
 make manifests
 ```
+#### Build the docker image
 
-If you want to start kubedl locally to work with a Kubernetes cluster, you should follow the [debug guide](./docs/debug_guide.md).
+Replace the image name to your own image
+
+{{< btn-copy text="export IMG=kubedl/kubedl:v0.3.0 && make docker-build" >}}
+```bash
+export IMG=kubedl/kubedl:v0.3.0 && make docker-build
+```
+
+#### Push the image
+
+Change the image name to your own image.
+{{< btn-copy text="docker push kubedl/kubedl:v0.3.0" >}}
+```bash
+docker push kubedl/kubedl:v0.3.0
+```
 
 ## Engage to help anything
 
