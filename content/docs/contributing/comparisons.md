@@ -13,7 +13,7 @@ weight: 400
 toc: true
 ---
 ## Comparisons with Kubeflow
-KubeDL supports training, modeling lineage versioning, inference, and automatic tuning for inference on Kubernetes.
+KubeDL currently supports training workloads on Kubernetes, and will have more functionalities coming later.
 Kubeflow is a machine learning toolkit for Kubernetes that contains many projects for different purposes.
 
 Both projects share the same goal to enable machine learning run on Kubernetes, but largely solve different problems,
