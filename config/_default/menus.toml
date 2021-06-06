@@ -33,10 +33,28 @@
   identifier = "help"
   url = "/docs/help/"
 
+[[model]]
+  name = "Introduction"
+  weight = 100
+  identifier = "intro"
+  url = "/model/intro"
+
+[[model]]
+  name = "Tutorial"
+  weight = 200
+  identifier = "examples"
+  url = "/model/examples"
+
 [[main]]
-  name = "Docs"
+  name = "Training"
   url = "/docs/prologue/introduction/"
   weight = 10
+
+[[main]]
+  name = "Model"
+  url = "/model/intro"
+  identifier = "model"
+  weight = 11
 
 [[main]]
   name = "Blog"
