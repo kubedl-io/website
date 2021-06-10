@@ -33,6 +33,12 @@
   identifier = "help"
   url = "/docs/help/"
 
+[[tuning]]
+  name = "Introduction"
+  weight = 100
+  identifier = "tuningintro"
+  url = "/tuning/intro"
+
 [[model]]
   name = "Introduction"
   weight = 100
@@ -55,6 +61,12 @@
   url = "/model/intro"
   identifier = "model"
   weight = 11
+
+[[main]]
+  name = "Tuning"
+  url = "/tuning/intro"
+  identifier = "tuning"
+  weight = 12
 
 [[main]]
   name = "Blog"
