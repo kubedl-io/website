@@ -27,6 +27,7 @@ It searches the best container-level configurations (e.g., resource allocations 
 </figure>
 
 ## Features
+
 Key benefits include:
 
 - Automated tuning workflows hidden behind simple APIs.
@@ -50,17 +51,18 @@ including:
 
 - sampling budget
 
-
 ## Getting started
 
 ### Install using YAML files
+
 Install Morphling using YAML files. [Go →]({{< ref "install-using-yaml" >}})
 
 ### Examples
+
 Run model serving configuration examples. [Go →]({{< ref "quick-start" >}})
 
-
 ##  Workflow
+
 See [Morphling Workflow]({{< ref "design" >}}) to check how Morphling tunes ML serving
 configurations automatically in a Kubernetes-native way.
 

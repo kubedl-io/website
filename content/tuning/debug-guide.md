@@ -11,6 +11,7 @@ menu:
 weight: 400
 toc: true
 ---
+
 ## DEBUG with local process
 
 - Credentials
@@ -45,11 +46,10 @@ The followings are the steps to Troubleshoot Morphling using Pod.
 `kubectl get deployment -n morphling-system`. If succeed, you will see
 three _**ready**_ deployments: morphling-controller, morphling-db-manager, and morphling-mysql.
 
-- Check the Morphling controller logs manually `kubectl -n morphling-system logs morphling-controller-XXX ` for debugging.
+- Check the Morphling controller logs manually `kubectl -n morphling-system logs morphling-controller-XXX` for debugging.
 
 - Check your cluster has enabled Kubernetes DNS service by `kubectl get svc -n kube-system kube-dns`. See this [GitHub Issue](https://github.com/mattermost/mattermost-docker/issues/419) for detailed discussion.
 
 - Check the ClusterRoleBinding to make sure morphling-controller has been granted corresponding authorities by `kubectl get ClusterRoleBinding morphling-controller`. If you cannot grant Morphling the cluster-scope authorities, you may need
 to change the ClusterRole to Role in the [manifest yaml](../manifests/controllers/rbac.yaml).
 See this [GitHub Issue](https://github.com/kubernetes-sigs/kubebuilder/issues/1366) for detailed discussion.
-

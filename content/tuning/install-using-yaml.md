@@ -13,18 +13,18 @@ weight: 100
 toc: true
 ---
 
-
 ## Install CRDs
 
 From [git root directory](https://github.com/alibaba/morphling), run
 
 {{< btn-copy text="kubectl apply -f config/crd/bases" >}}
+
 ```commandline
 kubectl apply -f config/crd/bases
 ```
 
+### Install Morphling Components
 
-#### Install Morphling Components
 The official Morphling component images are hosted under [docker hub](https://hub.docker.com/r/kubedl).
 
  ```commandline
@@ -36,13 +36,15 @@ The official Morphling component images are hosted under [docker hub](https://hu
  kubectl apply -f manifests/mysql-db
  kubectl apply -f manifests/db-manager
  ```
+
 By default, Morphling will be installed under `morphling-system` namespace.
 
-#### Check Intsalling
+### Check Intsalling
 
 Check if all components are running successfully:
 
 {{< btn-copy text="kubectl get deployment -n morphling-system" >}}
+
 ```commandline
 kubectl get deployment -n morphling-system
 ```
@@ -59,11 +61,13 @@ morphling-mysql        1/1     1            1           10m
 ## Uninstall Morphling controller
 
 {{< btn-copy text="kubectl delete namespace morphling-system" >}}
+
 ```bash
 kubectl delete namespace morphling-system
 ```
 
 ## Delete CRDs
+
 {{< btn-copy text="kubectl delete crd profilingexperiments.tuning.kubedl.io samplings.tuning.kubedl.io trials.tuning.kubedl.io" >}}
 
 ```bash

@@ -19,35 +19,45 @@ the first one the CPU cores (resource allocation), and the second one is maximum
 We use grid search for configuration sampling.
 
 #### Submit the configuration tuning experiment
+
 {{< btn-copy  text="kubectl -n morphling-system apply -f https://raw.githubusercontent.com/alibaba/morphling/master/example/experiment/experiment-resnet50-grid.yaml" >}}
+
 ```bash
 kubectl -n morphling-system apply -f https://raw.githubusercontent.com/alibaba/morphling/master/example/experiment/experiment-resnet50-grid.yaml
 ```
 
 #### Monitor the tuning experiment status
+
 ```bash
 kubectl get -n morphling-system pe
 kubectl describe -n morphling-system pe
 ```
+
 #### Monitor sampling trials (performance test)
+
 {{<btn-copy text="kubectl -n morphling-system get trial">}}
+
 ```bash
 kubectl -n morphling-system get trial
 ```
 
 #### Get the searched optimal configuration
+
 {{<btn-copy text="kubectl -n morphling-system get pe">}}
+
 ```bash
 kubectl -n morphling-system get pe
 ```
 
 Expected output:
+
 ```bash
 NAME                  STATE       AGE   OBJECT NAME   OPTIMAL OBJECT VALUE   OPTIMAL PARAMETERS
 resnet50-experiment   Succeeded   12m   qps           15                     [map[category:resource name:cpu value:4] map[category:env name:BATCH_SIZE value:32]]
 ```
 
 #### Delete the tuning experiment
+
 {{<btn-copy text="kubectl -n morphling-system delete pe --all">}}
 
 ```bash

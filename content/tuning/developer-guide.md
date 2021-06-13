@@ -11,24 +11,33 @@ menu:
 weight: 300
 toc: true
 ---
+
 ## Build the controller manager binary
+
 {{<btn-copy text="make manager">}}
+
 ```bash
 make manager
 ```
+
 ## Run the tests
+
 {{<btn-copy text="make test">}}
 
 ```bash
 make test
 ```
+
 ## Generate manifests, e.g., CRD YAML.
+
 {{<btn-copy text="make manifests">}}
 
 ```bash
 make manifests
 ```
+
 ## Build Morphling component images.
+
 {{<btn-copy text="make docker-build">}}
 
 ```bash
@@ -36,6 +45,7 @@ make docker-build
 ```
 
 ## Push Morphling component images.
+
 {{<btn-copy text="make docker-push">}}
 
 ```bash
