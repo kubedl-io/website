@@ -51,6 +51,12 @@
   identifier = "tuningreferences"
   url = "/tuning/references/"
 
+[[serving]]
+  name = "Introduction"
+  weight = 100
+  identifier = "servingintro"
+  url = "/serving/intro"
+
 [[model]]
   name = "Introduction"
   weight = 100
@@ -75,10 +81,16 @@
   weight = 11
 
 [[main]]
+  name = "Serving"
+  url = "/serving/intro"
+  identifier = "serving"
+  weight = 12
+
+[[main]]
   name = "Tuning"
   url = "/tuning/intro"
   identifier = "tuning"
-  weight = 12
+  weight = 13
 
 [[main]]
   name = "Blog"
