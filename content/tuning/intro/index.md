@@ -61,7 +61,7 @@ Install Morphling using YAML files. [Go →]({{< ref "install-using-yaml" >}})
 
 Run model serving configuration examples. [Go →]({{< ref "quick-start" >}})
 
-##  Workflow
+## Workflow
 
 See [Morphling Workflow]({{< ref "design" >}}) to check how Morphling tunes ML serving
 configurations automatically in a Kubernetes-native way.
