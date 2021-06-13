@@ -39,6 +39,18 @@
   identifier = "tuningintro"
   url = "/tuning/intro"
 
+[[tuning]]
+  name = "Tutorial"
+  weight = 200
+  identifier = "tuningexamples"
+  url = "/tuning/examples"
+
+[[tuning]]
+  name = "References"
+  weight = 300
+  identifier = "tuningreferences"
+  url = "/tuning/references/"
+
 [[model]]
   name = "Introduction"
   weight = 100
