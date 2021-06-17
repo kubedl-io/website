@@ -15,7 +15,7 @@ toc: true
 
 
 
-KubeDL Serving provides a group of user freindly APIs to construct online model inference services. It closely cooperates with `training` and `model` stages, making end-to-end deep learning development automatically.  
+KubeDL Serving provides a group of user freindly APIs to construct online model inference services. It closely cooperates with `training` and `model` stages, making end-to-end deep learning development automatically.
 
 KubeDL provides CRD `Inference` to accomplish this:
 
@@ -56,7 +56,7 @@ spec:
               cpu: 2048m
               memory: 2Gi
             requests:
-              cpu: 1024m               
+              cpu: 1024m
               memory: 1Gi
   - name: model-b-predictor
     modelVersion: model-b
