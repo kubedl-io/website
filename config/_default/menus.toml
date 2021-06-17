@@ -108,3 +108,8 @@
    name = "Code of Conduct"
    url = "/docs/contributing/code-of-conduct"
    weight = 10
+
+ [[footer]]
+   name = "How to Contribute"
+   url = "/docs/contributing/how-to-contribute"
+   weight = 20
