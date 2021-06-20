@@ -14,7 +14,7 @@ toc: true
 ---
 KubeDL automatically tunes the best container-level configurations
 before an ML model is deployed as inference services.
-This auto-configuration workflow is developed as an independent Kubernetes project---**Morphling**.
+This auto-configuration workflow is developed as an independent project---**Morphling**.   [Github  →](https://github.com/alibaba/morphling)
 
 ## Morphling Overview
 
