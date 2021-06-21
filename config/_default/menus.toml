@@ -87,7 +87,7 @@
   weight = 12
 
 [[main]]
-  name = "Tuning"
+  name = "Morphling"
   url = "/tuning/intro"
   identifier = "tuning"
   weight = 13
