@@ -55,13 +55,13 @@ spec:
               cpu: 2048m
               memory: 2Gi
             requests:
-              cpu: 1024m               
+              cpu: 1024m
               memory: 1Gi
 ```
 
 ## Inference With Multiple Models
 
-Inference is able to serve multiple models simultaneously, which may appers in serving different model versions and takes A/B tests, for example: 
+Inference is able to serve multiple models simultaneously, which may appers in serving different model versions and takes A/B tests, for example:
 
 ```yaml
 apiVersion: serving.kubedl.io/v1alpha1
@@ -123,6 +123,6 @@ spec:
               cpu: 2048m
               memory: 2Gi
             requests:
-              cpu: 1024m               
+              cpu: 1024m
               memory: 1Gi
 ```
