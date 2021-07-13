@@ -63,11 +63,11 @@ Status:
 KubeDL training jobs already support generating a ModelVersion CRD when the job completes. Thus, a model image is
 automatically generated if enabled.
 
-To enable this feature, the TensorFlow job spec needs to set the modelVersion field like below:
+To enable this feature, in case of TensorFlow, the job spec needs to set the modelVersion field like below YAML example.
 
-The job will first generate the model CRD with artifacts from a local path `/foo` at a particular node.
-Then a Kaniko container is created to incorporate the model artifacts and push to `modelhub/mnist` in dockerhub
-Note that the container's running command to specify the `--model-dir` also needs to be the same as the
+- The job will first generate the model CRD defining a local path `/foo` at a particular node.
+- Then Kaniko will generate an image that incorporates the model artifacts at that location and push to `modelhub/mnist` in dockerhub.
+- Note that the container's running command for the model output path`--model-dir` also needs to be the same as the
 path defined in `modelVersion`.
 
 ```YAML
