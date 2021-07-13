@@ -15,7 +15,7 @@ toc: true
 
 ## Create a ModelVersion Manually
 
-This `ModelVersion` CRD will create an image at `modelhub/model1`, based on the model artifacts located at node `node1`'s local path at `/foo`
+This `ModelVersion` CRD will generate an image at `modelhub/model1` in dockerhub, including the model artifacts located at `node1`'s local path at `/foo`
 
 ```YAML
 apiVersion: model.kubedl.io/v1alpha1
@@ -60,15 +60,15 @@ Status:
 
 ## Create a ModelVersion from training job
 
-KubeDL training jobs already supports generating a ModelVersion CRD when the job completes. Thus, a model image is
-automatically generated.
+KubeDL training jobs already support generating a ModelVersion CRD when the job completes. Thus, a model image is
+automatically generated if enabled.
 
-To enable this feature, the TensorFlow job spec needs to set the modelVersion field like the example below:
+To enable this feature, the TensorFlow job spec needs to set the modelVersion field like below:
 
-The job will first generate the model artifacts on a local path `/foo` at a particular node.
-Then a Kaniko container is created to incorporate the model artifacts and push to modelhub/mnist.
-Note that the container's running command to specify the model output path also needs to be consistent with the
-path defined in ModelVersion.
+The job will first generate the model CRD with artifacts from a local path `/foo` at a particular node.
+Then a Kaniko container is created to incorporate the model artifacts and push to `modelhub/mnist` in dockerhub
+Note that the container's running command to specify the `--model-dir` also needs to be the same as the
+path defined in `modelVersion`.
 
 ```YAML
 apiVersion: training.kubedl.io/v1alpha1
@@ -78,7 +78,7 @@ metadata:
   namespace: default
 spec:
   cleanPodPolicy: None
-  modelVersion:
+  modelVersion:  # Define the model info
     modelName: mnist
     imageRepo: modelhub/mnist
     storage:
@@ -99,7 +99,7 @@ spec:
                 - "--log_dir=/train/logs"
                 - "--learning_rate=0.01"
                 - "--batch_size=150"
-                - "--model_dir=/foo"
+                - "--model_dir=/foo"      # The value needs to be the same as modelVersion.storage.path
               volumeMounts:
                 - mountPath: "/train"
                   name: "training"
