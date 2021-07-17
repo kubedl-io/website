@@ -37,10 +37,20 @@ spec:
   createdBy: user1                      // The entity (user or training job) that creates the model
   imageRepo: modelhub/resnet            // The image repo to push the generated model
   storage:
-    localStorage:                       // The local storage where the model is located
-      path: /foo
-      nodeName: kind-control-plane
+    localStorage:                       // The local storage to store the model
+      path: /foo                        // The local host path to export the model
+      nodeName: kind-control-plane      // The node where the chief worker run to export the model
 ```
+
+#### Pre-defined KubeDL model path in container
+KubeDL pre-defines the path to store the model inside the container as `/kubedl-model`
+
+The model storage such as local fs, nfs will be mounted to /kubedl-model inside each training container. Hence,
+the training code inside the container must export the model under `/kubedl-model`, so that it is also present on the external storage.
+The ModelVersion controller will trigger a Kaniko container to include the model in the built image.
+
+Each container is also automatically injected with an ENV as `KUBEDL_MODEL_PATH=/kubedl-model`. The code can also get
+the path by looking up the ENV.
 
 ### Model
 

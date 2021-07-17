@@ -14,30 +14,6 @@ toc: true
 ---
 KubeDL model uses Kaniko underneath to generate the image that incorporates the model artifacts.
 
-## Create Dockerfile
-
-A dockerfile is required for the Kaniko container to generate the image. We use a configmap to describe the dockerfile
-and it'll be made available to the Kaniko container at runtime. The generated image will have the model artifacts located under `/model`.
-Apply below ConfigMap to the Kubernetes cluster.
-
-```bash
-kubectl apply -f dockerfile.yaml
-```
-
-dockerfile.yaml content as below:
-
-```YAML
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: dockerfile
-  namespace: default
-data:
-  dockerfile: |
-    FROM busybox
-    COPY build/ /model
-```
-
 ## Create Docker Credentials
 
 Docker credentials is also required for Kaniko to be able to push the image to docker registry:

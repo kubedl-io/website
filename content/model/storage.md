@@ -20,10 +20,10 @@ Check the full spec [here.](https://github.com/alibaba/kubedl/blob/master/apis/m
 ### Local Storage
 
 ```YAML
-// LocalStorage defines the local storage for storing the model version.
+// LocalStorage defines the local host path for storing the model version.
 // For a distributed training job, the nodeName will be the node where the chief/master worker run to output the model.
 type LocalStorage struct {
-    // The local path on the host
+    // The local path on the host to store the model artifacts.
     // +required
     Path     string `json:"path,omitempty"`
 
@@ -43,24 +43,5 @@ type NFS struct {
 
     // The path under which the model is stored, e.g. /models/my_model1
     Path   string `json:"path,omitempty"`
-}
-```
-
-### AWS EFS
-
-(work in progress)
-
-```YAML
-type AWSEfs struct {
-    // VolumeHandle indicates the backend EFS volume. Check the link for details
-    // https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes
-    // It is of the form "[FileSystemId]:[Subpath]:[AccessPointId]"
-    // e.g. FilesystemId with subpath and access point Id:  fs-e8a95a42:/my/subpath:fsap-19f752f0068c22464.
-    // FilesystemId with access point Id:   fs-e8a95a42::fsap-068c22f0246419f75
-    // FileSystemId with subpath:    fs-e8a95a42:/dir1
-    VolumeHandle string `json:"volumeHandle,omitempty"`
-
-    // The attributes passed to the backend EFS
-    Attributes map[string]string `json:"attributes,omitempty"`
 }
 ```
