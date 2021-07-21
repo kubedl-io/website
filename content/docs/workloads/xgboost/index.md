@@ -63,5 +63,5 @@ spec:
                 - --n_estimators=10
                 - --learning_rate=0.1
 ```
-## Spec
+## CRD Spec
 Check the CRD definition. [Go ->](https://github.com/alibaba/kubedl/blob/master/apis/training/v1alpha1/xgboostjob_types.go)
