@@ -43,6 +43,7 @@ spec:
 ```
 
 #### Pre-defined KubeDL model path in container
+
 KubeDL pre-defines the path to store the model inside the container as `/kubedl-model`
 
 The model storage such as local fs, nfs will be mounted to /kubedl-model inside each training container. Hence,
