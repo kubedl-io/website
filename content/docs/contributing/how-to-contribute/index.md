@@ -147,6 +147,8 @@ Sensitive data could be password, secret key, network locations, private busines
 
 ### Code and doc contribution
 
+The KubeDL website repo is hosted at [https://github.com/kubedl-io/website](https://github.com/kubedl-io/website).
+
 Every action to make KubeDL better is encouraged.
 
 - If you find a typo, try to fix it!
