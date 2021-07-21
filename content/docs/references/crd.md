@@ -1,7 +1,7 @@
 ---
-title: "CRD Definitions"
-description: "KubeDL Training Job CRD Definitions"
-lead: "KubeDL Training Job CRD Definitions"
+title: "Training CRD Spec"
+description: "KubeDL Training Job CRD Spec"
+lead: "KubeDL Training Job CRD Spec"
 date: 2021-04-01T15:26:42-07:00
 lastmod: 2021-04-01T15:26:42-07:00
 draft: false

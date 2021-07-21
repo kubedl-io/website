@@ -57,6 +57,12 @@
   identifier = "servingintro"
   url = "/serving/intro"
 
+[[Serving]]
+  name = "References"
+  weight = 300
+  identifier = "servingreferences"
+  url = "/serving/references"
+
 [[model]]
   name = "Introduction"
   weight = 100
@@ -68,6 +74,12 @@
   weight = 200
   identifier = "examples"
   url = "/model/examples"
+
+[[model]]
+  name = "References"
+  weight = 300
+  identifier = "modelreferences"
+  url = "/model/references/"
 
 [[main]]
   name = "Training"
