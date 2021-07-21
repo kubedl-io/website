@@ -93,8 +93,8 @@
   weight = 13
 
 [[main]]
-  name = "Blog"
-  url = "/blog/"
+  name = "Contribute"
+  url = "/docs/contributing/how-to-contribute"
   weight = 20
 
 [[social]]
