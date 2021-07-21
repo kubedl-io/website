@@ -8,7 +8,7 @@ draft: false
 images: []
 menu:
   model:
-    parent: "modelreferences"
+    parent: "references"
 weight: 200
 toc: true
 ---

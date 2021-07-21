@@ -8,7 +8,7 @@ draft: false
 images: []
 menu:
   serving:
-    parent: "intro"
+    parent: "servingintro"
 weight: 100
 toc: true
 ---

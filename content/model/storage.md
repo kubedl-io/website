@@ -8,7 +8,7 @@ draft: false
 images: []
 menu:
   model:
-    parent: "examples"
+    parent: "getstart"
 weight: 100
 toc: true
 ---

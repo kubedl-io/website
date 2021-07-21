@@ -1,5 +1,5 @@
 [[docs]]
-  name = "Prologue"
+  name = "Introduction"
   weight = 10
   identifier = "prologue"
   url = "/docs/prologue/"
@@ -57,11 +57,6 @@
   identifier = "servingintro"
   url = "/serving/intro"
 
-[[Serving]]
-  name = "References"
-  weight = 300
-  identifier = "servingreferences"
-  url = "/serving/references"
 
 [[model]]
   name = "Introduction"
@@ -70,16 +65,9 @@
   url = "/model/intro"
 
 [[model]]
-  name = "Tutorial"
+  name = "Get Started"
   weight = 200
-  identifier = "examples"
-  url = "/model/examples"
-
-[[model]]
-  name = "References"
-  weight = 300
-  identifier = "modelreferences"
-  url = "/model/references/"
+  identifier = "getstart"
 
 [[main]]
   name = "Training"
