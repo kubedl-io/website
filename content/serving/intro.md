@@ -43,13 +43,18 @@ spec:
       spec:
         containers:
         - name: tensorflow
-          image: kubedl/tf-serving:1.0
+          args:
+          - --port=9000
+          - --rest_api_port=8500
+          - --model_name=mnist
+          - --model_base_path=/kubedl-model/
           command:
-          - "python"
-          - "/var/tf_mnist/mnist_with_summaries.py"
-          - "--log_dir=/train/logs"
-          - "--learning_rate=0.01"
-          - "--batch_size=150"
+          - /usr/bin/tensorflow_model_server
+          image: tensorflow/serving:1.11.1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9000
+          - containerPort: 8500
           resources:
             limits:
               cpu: 2048m
@@ -84,13 +89,18 @@ spec:
       spec:
         containers:
         - name: tensorflow
-          image: kubedl/tf-serving:1.0
+          args:
+          - --port=9000
+          - --rest_api_port=8500
+          - --model_name=mnist
+          - --model_base_path=/kubedl-model/
           command:
-          - "python"
-          - "/var/tf_mnist/mnist_with_summaries.py"
-          - "--log_dir=/train/logs"
-          - "--learning_rate=0.01"
-          - "--batch_size=150"
+          - /usr/bin/tensorflow_model_server
+          image: tensorflow/serving:1.11.0
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9000
+          - containerPort: 8500
           resources:
             limits:
               cpu: 2048m
@@ -111,13 +121,18 @@ spec:
       spec:
         containers:
         - name: tensorflow
-          image: kubedl/tf-serving:1.0
+          args:
+          - --port=9000
+          - --rest_api_port=8500
+          - --model_name=mnist
+          - --model_base_path=/kubedl-model/
           command:
-          - "python"
-          - "/var/tf_mnist/mnist_with_summaries.py"
-          - "--log_dir=/train/logs"
-          - "--learning_rate=0.01"
-          - "--batch_size=150"
+          - /usr/bin/tensorflow_model_server
+          image: tensorflow/serving:1.11.1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9000
+          - containerPort: 8500
           resources:
             limits:
               cpu: 2048m
