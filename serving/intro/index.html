@@ -20,13 +20,18 @@ spec:
       spec:
         containers:
         - name: tensorflow
-          image: kubedl/tf-serving:1.0
+          args:
+          - --port=9000
+          - --rest_api_port=8500
+          - --model_name=mnist
+          - --model_base_path=/kubedl-model/
           command:
-          - &quot;python&quot;
-          - &quot;/var/tf_mnist/mnist_with_summaries.py&quot;
-          - &quot;--log_dir=/train/logs&quot;
-          - &quot;--learning_rate=0.01&quot;
-          - &quot;--batch_size=150&quot;
+          - /usr/bin/tensorflow_model_server
+          image: tensorflow/serving:1.11.1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9000
+          - containerPort: 8500
           resources:
             limits:
               cpu: 2048m
@@ -54,13 +59,18 @@ spec:
       spec:
         containers:
         - name: tensorflow
-          image: kubedl/tf-serving:1.0
+          args:
+          - --port=9000
+          - --rest_api_port=8500
+          - --model_name=mnist
+          - --model_base_path=/kubedl-model/
           command:
-          - &quot;python&quot;
-          - &quot;/var/tf_mnist/mnist_with_summaries.py&quot;
-          - &quot;--log_dir=/train/logs&quot;
-          - &quot;--learning_rate=0.01&quot;
-          - &quot;--batch_size=150&quot;
+          - /usr/bin/tensorflow_model_server
+          image: tensorflow/serving:1.11.0
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9000
+          - containerPort: 8500
           resources:
             limits:
               cpu: 2048m
@@ -81,13 +91,18 @@ spec:
       spec:
         containers:
         - name: tensorflow
-          image: kubedl/tf-serving:1.0
+          args:
+          - --port=9000
+          - --rest_api_port=8500
+          - --model_name=mnist
+          - --model_base_path=/kubedl-model/
           command:
-          - &quot;python&quot;
-          - &quot;/var/tf_mnist/mnist_with_summaries.py&quot;
-          - &quot;--log_dir=/train/logs&quot;
-          - &quot;--learning_rate=0.01&quot;
-          - &quot;--batch_size=150&quot;
+          - /usr/bin/tensorflow_model_server
+          image: tensorflow/serving:1.11.1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9000
+          - containerPort: 8500
           resources:
             limits:
               cpu: 2048m
