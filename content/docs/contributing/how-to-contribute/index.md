@@ -86,6 +86,14 @@ Change the image name to your own image.
 docker push kubedl/kubedl:v0.3.0
 ```
 
+#### Generate the helm chart
+
+Generate the helm chart, the helm chart will be generated under [helm/kubedl](https://github.com/kubedl-io/kubedl/tree/master/helm/kubedl)
+{{< btn-copy text="make helm-chart" >}}
+```bash
+make helm-chart
+```
+
 ### Git Preparation (Skip if you are familiar with Git)
 
 To put forward a PR, we assume you have registered a GitHub ID.
