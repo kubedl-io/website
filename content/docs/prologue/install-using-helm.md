@@ -45,9 +45,9 @@ Helm will install CRDs and KubeDL controller under `kubedl-system` namespace.
 helm uninstall kubedl -n kubedl-system
 ```
 
-## Delete CRDs
+## Delete all kubedl.io CRDs
 ```bash
-kubectl delete crd elasticdljobs.training.kubedl.io marsjobs.training.kubedl.io mpijobs.training.kubedl.io pytorchjobs.training.kubedl.io tfjobs.training.kubedl.io xdljobs.training.kubedl.io xgboostjobs.training.kubedl.io
+kubectl get crd | grep kubedl.io | cut -d ' ' -f 1 | xargs kubectl delete crd
 ```
 
 ## Enable specific job Kind
