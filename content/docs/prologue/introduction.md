@@ -43,7 +43,7 @@ Get instructions on how to accomplish common tasks with KubeDL. [Recipes →](ht
 
 ## Reference
 
-References for apis, metrics etc. [Reference →]({{< ref "references" >}})
+References for CRD apis, metrics etc. [Reference →]({{< ref "docs/references" >}})
 
 ## Contributing
 

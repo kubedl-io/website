@@ -32,3 +32,7 @@ toc: true
 ## XGBoost CRD
 
 [Go ->](https://github.com/kubedl-io/kubedl/blob/master/apis/training/v1alpha1/xgboostjob_types.go)
+
+## Cron CRD
+
+[Go ->](https://github.com/kubedl-io/kubedl/blob/master/apis/apps/v1alpha1/cron_types.go)
