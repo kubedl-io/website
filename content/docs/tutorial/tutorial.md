@@ -12,7 +12,7 @@ menu:
 weight: 200
 toc: true
 ---
-This tutorial will walk through KubeDL training, KubeDL model and KubeDL Serving concepts.
+This tutorial will walk through [KubeDL Training]({{< ref "docs/prologue/introduction" >}}), [KubeDL Model]({{< ref "model/intro" >}}) and [KubeDL Serving]({{< ref "serving/intro" >}}) concepts.
 
 ## Install KubeDL
 
@@ -20,20 +20,20 @@ Follow the instructions to install KubeDL. [Go →]({{< ref "docs/prologue/insta
 
 ## Setup docker credential
 
-The docker credential is required for [KubeDL model]({{< ref "model/intro" >}}) to store the model image.
+The docker credential is required for KubeDL Model to store the model image.
 This step is not needed if you don't use KubeDL model. This tutorial will use it.
 
 Follow the setup instruction to setup docker credential. [Go →]({{< ref "model/setup" >}})
 
 ## Run a job to train a model
 
-This example trains a mnist model using distributed TensorFlow.
+This example trains a mnist model using distributed TensorFlow. From project root, run:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubedl-io/kubedl/master/example/tf/tf_job_mnist_model.yaml
+kubectl apply -f example/tf/tf_job_mnist_model.yaml
 ```
 
-Explanation on the YAML
+Explanation on the [YAML](https://github.com/kubedl-io/kubedl/blob/master/example/tf/tf_job_mnist_model.yaml)
 
 ```yaml
 apiVersion: "training.kubedl.io/v1alpha1"
