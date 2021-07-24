@@ -27,21 +27,24 @@ The model artificats will be present at '/kubedl-model' inside the built image.
 
 Note that the container command needs to specify `/kubedl_model` as the model export path. Allowing user-specified path will be supported later
 
-```YAML
+```yaml
 apiVersion: "training.kubedl.io/v1alpha1"
 kind: "TFJob"
 metadata:
   name: "distributed-bbb"
 spec:
   cleanPodPolicy: None
+  # modelVersion defines the location where the model is stored.
   modelVersion:
     modelName: mymodel
-    # The image repo to push the model
+    # The dockerhub repo to push the generated image
     imageRepo: jianhe6/mymodel
     storage:
+      # Use hostpath, NFS is also supported.
       localStorage:
-        # The host dir for THIS model, each model should have its own unique parent folder, in this case, 'mymodel'
+        # The host dir for THIS model, each modelVersion should have its own unique parent folder, in this case, 'mymodel'
         path: /models/mymodel
+        # The node for storing the model
         nodeName: kind-control-plane
   tfReplicaSpecs:
     Worker:
@@ -56,8 +59,8 @@ spec:
               command:
                 - "python"
                 - "/keras_model_to_estimator.py"
-                - "/tmp/tfkeras_example/" # checkpoint dir
-                - "/kubedl_model"         # export saved_model dir
+                - "/tmp/tfkeras_example/" # model checkpoint dir
+                - "/kubedl-model"         # export dir for the saved_model format
 ```
 
 A Model CRD is also automatically generated with ModelVersion's ownerReference point the Model.

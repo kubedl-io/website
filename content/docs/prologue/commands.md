@@ -12,7 +12,7 @@ menu:
 weight: 500
 toc: true
 ---
-### Job kind
+### Training Job kind
 - tfjob
 - pytorchjob
 - marsjob
@@ -21,11 +21,13 @@ toc: true
 - elasticdljob
 - xgboostjob
 
+### Other Workload Kind
+- cron
+
 These kinds can be used in the kubectl command.
 
 ### Submit
 
-{{< btn-copy text="kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/example/tf/tf_job_mnist.yaml" >}}
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/example/tf/tf_job_mnist.yaml
 ```

@@ -3,6 +3,13 @@
   weight = 10
   identifier = "prologue"
   url = "/docs/prologue/"
+
+[[docs]]
+  name = "Tutorial"
+  weight = 20
+  identifier = "tutorial"
+  url = "/docs/tutorial/tutorial"
+
 [[docs]]
   name = "Workloads"
   weight = 20
