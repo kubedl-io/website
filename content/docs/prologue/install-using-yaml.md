@@ -16,11 +16,10 @@ toc: true
 
 ## Install CRDs
 
-From [git root directory](https://github.com/alibaba/kubedl), run
+From [project root directory](https://github.com/alibaba/kubedl), run
 
-{{< btn-copy text="kubectl apply -f helm/kubedl/crds/" >}}
 ```bash
-kubectl apply -f helm/kubedl/crds/
+kubectl apply -f config/crd/bases/
 ```
 
 ## Install KubeDL controller
@@ -36,7 +35,6 @@ The official KubeDL controller image is hosted under [docker hub](https://hub.do
 
 ## Uninstall KubeDL controller
 
-{{< btn-copy text="kubectl delete namespace kubedl-system" >}}
 ```bash
 kubectl delete namespace kubedl-system
 ```

@@ -30,7 +30,7 @@ Follow the setup instruction to setup docker credential. [Go →]({{< ref "model
 This example trains a mnist model using distributed TensorFlow. From project root, run:
 
 ```bash
-kubectl apply -f example/tf/tf_job_mnist_model.yaml
+kubectl apply -f example/tf/tf_job_mnist_modelversion.yaml
 ```
 
 Explanation on the [YAML](https://github.com/kubedl-io/kubedl/blob/master/example/tf/tf_job_mnist_model.yaml)
@@ -159,3 +159,57 @@ Here, the `1627086141/` parent folder is automatically created by the training c
 
 
 ## Serve the model
+
+Run an Inference workload
+
+```bash
+kubectl apply -f example/tf/tf_serving_modelversion.yaml
+```
+The YAML content looks like below:
+
+```yaml
+apiVersion: serving.kubedl.io/v1alpha1
+kind: Inference
+metadata:
+  name: hello-inference
+spec:
+  framework: TFServing
+  predictors:
+    - name: model-predictor
+      # The model version to be served
+      modelVersion: mv-tf-distributed-5f4c7
+      # The model path inside the container, it's the tensorflow serving model_base_path
+      modelPath: /kubedl-model
+      replicas: 1
+      batching:
+        batchSize: 32
+      template:
+        spec:
+          containers:
+            - name: tensorflow
+              args:
+                - --port=9000
+                - --rest_api_port=8500
+                - --model_name=mnist
+                - --model_base_path=/kubedl-model/  # This should be the same as modelPath field.
+              command:
+                - /usr/bin/tensorflow_model_server
+              image: tensorflow/serving:1.11.1
+              imagePullPolicy: IfNotPresent
+              ports:
+                - containerPort: 9000
+                - containerPort: 8500
+              resources:
+                limits:
+                  cpu: 2048m
+                  memory: 2Gi
+                requests:
+                  cpu: 1024m
+                  memory: 1Gi
+```
+
+Inspect the Inference workload state
+
+```bash
+kubectl get inference
+```
