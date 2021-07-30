@@ -1,7 +1,7 @@
 ---
-title: "Web Console"
-description: "A Web Console for KubeDL"
-lead: "KubeDL provides a web console for viewing and submitting jobs."
+title: "Dashboard"
+description: "A Dashboard for KubeDL"
+lead: "KubeDL provides a dashboard for viewing and submitting jobs."
 date: 2021-04-07T15:35:16-07:00
 lastmod: 2021-04-07T15:35:16-07:00
 draft: false
@@ -13,10 +13,10 @@ weight: 700
 toc: true
 ---
 
-{{< img src="blurred.png" alt="console" caption="KubeDL console" class="border-0">}}
+{{< img src="blurred.png" alt="dashboard" caption="KubeDL Dashboard" class="border-0">}}
 
 
-KubeDL console consists of a frontend and a backend. Below documentation describes how to build and run them.
+KubeDL dashboard consists of a frontend and a backend. Below documentation describes how to build and run them.
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ $ go build -o backend-server ./backend/cmd/backend-server/main.go
 #### Optional Settings
 1. Default Training Container Images
 
-    You can set the default container images for submitting the training jobs through web console by creating a `ConfigMap`
+    You can set the default container images for submitting the training jobs through dashboard by creating a `ConfigMap`
     named `kubedl-console-config` in `kubedl-system` namespace as below:
     ``` yaml
      apiVersion: v1

@@ -20,10 +20,12 @@ Currently, KubeDL supports running [TensorFlow](https://github.com/tensorflow/te
 ## Key Features
 - Support different kinds of deep learning training jobs in a single controller. You don't need to run each controller for each job kind.
 - Expose unified [prometheus metrics]({{< ref "metrics" >}}) for job stats.
-- Save job metadata and events in external storage such as Mysql or certain event DB to outlive api-server state.
+- [Persist]({{< ref "metadata-persistency" >}}) job metadata and events in external storage such as Mysql or certain event DB to outlive api-server state.
 - [Sync files]({{< ref "code-sync" >}}) on container launch. You no longer need to rebuild the image to include the modified code every time.
-- Run jobs with host network for performance or nvlink communication across containers.
+- Run jobs with [host network]({{< ref "hostnetwork" >}}) for performance or nvlink communication across containers.
 - Support advanced scheduling features such as gang scheduling.
+- Support [Tensorboard]({{< ref "tensorboard" >}}) out of the box.
+- A catchy [dashboard]({{< ref "dashboard" >}}) !
 
 ## Get started
 
