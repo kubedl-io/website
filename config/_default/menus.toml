@@ -58,6 +58,12 @@
   identifier = "tuningreferences"
   url = "/tuning/references/"
 
+[[tuning]]
+name = "contributing"
+weight = 400
+identifier = "tuningcontributing"
+url = "/tuning/contributing/"
+
 [[serving]]
   name = "Introduction"
   weight = 100
