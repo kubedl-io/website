@@ -13,63 +13,39 @@ weight: 220
 toc: true
 ---
 
-## Install CRDs
+## Install Helm
+Helm is a package manager for Kubernetes. A demo installation on MacOS:
 
-From [git root directory](https://github.com/alibaba/morphling), run
-
-{{< btn-copy text="kubectl apply -f config/crd/bases" >}}
-
-```commandline
-kubectl apply -f config/crd/bases
-```
-
-### Install Morphling Components
-
-The official Morphling component images are hosted under [docker hub](https://hub.docker.com/r/kubedl).
-
- ```commandline
- kubectl create namespace morphling-system
-
- kubectl apply -f manifests/configmap
- kubectl apply -f manifests/controllers
- kubectl apply -f manifests/pv
- kubectl apply -f manifests/mysql-db
- kubectl apply -f manifests/db-manager
- ```
-
-By default, Morphling will be installed under `morphling-system` namespace.
-
-### Check Intsalling
-
-Check if all components are running successfully:
-
-{{< btn-copy text="kubectl get deployment -n morphling-system" >}}
-
-```commandline
-kubectl get deployment -n morphling-system
-```
-
-Expected output:
-
-```commandline
-NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
-morphling-controller   1/1     1            1           10m
-morphling-db-manager   1/1     1            1           10m
-morphling-mysql        1/1     1            1           10m
-```
-
-## Uninstall Morphling controller
-
-{{< btn-copy text="kubectl delete namespace morphling-system" >}}
-
+{{< btn-copy text="brew install helm">}}
 ```bash
-kubectl delete namespace morphling-system
+brew install helm
+```
+Check the [helm website](https://helm.sh/docs/intro/install/) for more details.
+
+## Install Morphling
+From the root directory, run
+
+{{< btn-copy text="helm install morphling ./helm/morphling --create-namespace -n morphling-system">}}
+```bash
+helm install morphling ./helm/morphling --create-namespace -n morphling-system
 ```
 
-## Delete CRDs
+You can override default values defined in [values.yaml](https://github.com/alibaba/morphling/blob/main/helm/morphling/values.yaml) with `--set` flag.
+For example, set the custom cpu/memory resource:
 
-{{< btn-copy text="kubectl delete crd profilingexperiments.tuning.kubedl.io samplings.tuning.kubedl.io trials.tuning.kubedl.io" >}}
-
+{{< btn-copy text="helm install morphling ./helm/morphling --create-namespace -n morphling-system --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi">}}
 ```bash
-kubectl delete crd profilingexperiments.tuning.kubedl.io samplings.tuning.kubedl.io trials.tuning.kubedl.io
+helm install morphling ./helm/morphling --create-namespace -n morphling-system  --set resources.requests.cpu=1024m --set resources.requests.memory=2Gi
+```
+Helm will install CRDs and other Morphling components under `morphling-system` namespace.
+
+## Uninstall Morphling
+{{< btn-copy text="helm uninstall morphling -n morphling-system">}}
+```bash
+helm uninstall morphling -n morphling-system
+```
+
+## Delete all morphling CRDs
+```bash
+kubectl get crd | grep tuning.kubedl.io | cut -d ' ' -f 1 | xargs kubectl delete crd
 ```
