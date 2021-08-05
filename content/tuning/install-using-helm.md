@@ -1,7 +1,7 @@
 ---
-title: "Install Using Yaml"
+title: "Install Using Helm"
 description: ""
-lead: "Install Morphling with YAML files."
+lead: "Install Morphling with Helm charts."
 date: 2021-06-12T17:46:36-07:00
 lastmod: 2021-06-13T17:46:36-07:00
 draft: false
@@ -9,7 +9,7 @@ images: []
 menu:
   tuning:
     parent: "tuningintro"
-weight: 210
+weight: 220
 toc: true
 ---
 

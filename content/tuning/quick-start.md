@@ -8,8 +8,8 @@ draft: false
 images: []
 menu:
   tuning:
-    parent: "tuningexamples"
-weight: 200
+    parent: "tuningintro"
+weight: 230
 toc: true
 ---
 This example demonstrates how to tune the configuration for a [resnet50](https://www.tensorflow.org/api_docs/python/tf/keras/applications/ResNet50) model deployed with [Tensorflow Serving](https://www.tensorflow.org/tfx/guide/serving) under Morphling.

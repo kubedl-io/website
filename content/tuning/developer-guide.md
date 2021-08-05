@@ -7,8 +7,8 @@ draft: false
 images: []
 menu:
   tuning:
-    parent: "tuningexamples"
-weight: 300
+    parent: "tuningcontributing"
+weight: 100
 toc: true
 ---
 
