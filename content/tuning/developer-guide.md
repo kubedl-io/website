@@ -54,10 +54,12 @@ make docker-build
 make docker-push
 ```
 
-#### Generate the helm chart
+## Generate the helm chart
 
 Generate the helm chart, the helm chart will be generated under [helm/morphling](https://github.com/kubedl-io/morphling/tree/main/helm/morphling)
+
 {{< btn-copy text="make helm-chart" >}}
+
 ```bash
 make helm-chart
 ```
