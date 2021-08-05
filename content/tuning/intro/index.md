@@ -29,7 +29,6 @@ It searches the best container-level configurations (e.g., resource allocations 
 ## Features
 
 Key benefits include:
-
 - Automated tuning workflows hidden behind simple APIs.
 - Out of the box ML model serving stress-test clients.
 - Cloud agnostic and tested on [AWS](https://aws.amazon.com/), [Alicloud](https://us.alibabacloud.com/), etc.
