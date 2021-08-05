@@ -18,7 +18,6 @@ This tutorial will walk through [Morphling Tuning (Morphling)]({{< ref "tuning/i
 
 Follow the instructions to install Morphling. [Go →]({{< ref "tuning/install-using-helm" >}})
 
-
 ## Run a tuning experiment
 
 This example tunes a mobilenet model using grid search. The tunable configurations include resource/cpu, resource/memory, and runtime/batch_size.
@@ -113,10 +112,10 @@ spec:
 ```
 
 Notes：
+
 1. `servicePodTemplate` field defines the model serving pod template, where the model is stored in the docker image. In this demo, we use tensorflow-serving as the serving backends.
 2. `clientTemplate` field defines the stress-testing k8s job, which sends concurrent model serving requests to the serving pod, monitoring the response time, and eventually measures the maximum request concurrency this model can serve under a specific configuration. Morphling provides out-of-the-box stress-testing docker image for HTTP request.
 Check the [documentation]({{< ref "tuning/design" >}}) for more details
-
 
 ## Inspect the tuning experiment
 
