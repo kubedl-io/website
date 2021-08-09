@@ -17,7 +17,7 @@
   url = "/docs/workloads/"
 
 [[docs]]
-  name = "recipes"
+  name = "features"
   weight = 30
   identifier = "recipes"
   url = "/docs/recipes/"
