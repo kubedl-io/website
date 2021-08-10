@@ -53,4 +53,4 @@ The essence of `hostnetwork-mode` is to randomize container ports to avoid port 
 
 Here is a Tensorflow job example:
 
-{{< img src="tf_hostnetwork.png" alt="tf_hostnetwork" caption="tensorflow hostnetwork" >}}
+{{< img src="tf_hostnetwork.png" alt="tf_hostnetwork" caption="tensorflow hostnetwork" div align="center" >}}
