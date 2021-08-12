@@ -35,7 +35,16 @@ The official Morphling component images are hosted under [docker hub](https://hu
  kubectl apply -f manifests/pv
  kubectl apply -f manifests/mysql-db
  kubectl apply -f manifests/db-manager
+ kubectl apply -f manifests/algorithm
  ```
+
+To deploy Morphling UI [Go →]({{< ref "tuning/ui" >}}), run
+
+{{< btn-copy text="kubectl apply -f manifests/ui">}}
+
+```bash
+kubectl apply -f manifests/ui
+```
 
 By default, Morphling will be installed under `morphling-system` namespace.
 
@@ -52,11 +61,15 @@ kubectl get deployment -n morphling-system
 Expected output:
 
 ```commandline
-NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
-morphling-controller   1/1     1            1           10m
-morphling-db-manager   1/1     1            1           10m
-morphling-mysql        1/1     1            1           10m
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+morphling-algorithm-server   1/1     1            1           34s
+morphling-controller         1/1     1            1           9m23s
+morphling-db-manager         1/1     1            1           9m11s
+morphling-mysql              1/1     1            1           9m15s
+morphling-ui                 1/1     1            1           4m53s
 ```
+
+Please wait until all these deployments are `ready`.
 
 ## Uninstall Morphling controller
 

@@ -28,7 +28,7 @@ From project root, run:
 kubectl apply -f examples/experiment/experiment-mobilenet-grid.yaml
 ```
 
-Explanation on the [YAML](https://github.com/kubedl-io/morphling/blob/main/example/experiment/experiment-mobilenet-grid.yaml)
+Explanation on the [YAML](https://github.com/kubedl-io/morphling/blob/main/examples/experiment/experiment-mobilenet-grid.yaml)
 
 ```yaml
 apiVersion: "tuning.kubedl.io/v1alpha1"
@@ -119,7 +119,7 @@ Check the [documentation]({{< ref "tuning/design" >}}) for more details
 
 ## Inspect the tuning experiment
 
-After the tuning experiment succeeded, run `kubectl get profilingexperiment`:
+After the tuning experiment succeeded, run `kubectl get pe`:
 
 ```bash
 NAME                          STATE       AGE   OBJECT NAME   OPTIMAL OBJECT VALUE   OPTIMAL PARAMETERS
