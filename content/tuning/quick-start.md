@@ -52,7 +52,7 @@ kubectl -n morphling-system get pe
 Expected output:
 
 ```bash
-NAME                        STATE       AGE   OBJECT NAME   OPTIMAL OBJECT VALUE   OPTIMAL PARAMETERS
+NAME                        STATE       AGE     OBJECT NAME   OPTIMAL OBJECT VALUE   OPTIMAL PARAMETERS
 mobilenet-experiment-grid   Succeeded   5m59s   qps           31                     [map[category:env name:BATCH_SIZE value:2] map[category:resource name:cpu value:2000m] map[category:resource name:memory value:2000Mi]]
 ```
 
