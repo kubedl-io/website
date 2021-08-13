@@ -73,10 +73,10 @@ Please wait until all these deployments are `ready`.
 
 ## Uninstall Morphling controller
 
-{{< btn-copy text="kubectl delete namespace morphling-system" >}}
+{{< btn-copy text="bash script/undeploy.sh" >}}
 
 ```bash
-kubectl delete namespace morphling-system
+bash script/undeploy.sh
 ```
 
 ## Delete CRDs
