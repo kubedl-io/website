@@ -24,7 +24,7 @@ gang scheduling, including the [Coscheduling Scheduling Plugin](https://github.c
 KubeDL provides a plugin framework to support different schedulers as a backend. Currently, KubeDL supports kube-coscheduler and kube-batch.
 
 
-{{< img src="kubedl-gangschedule.png" alt="kubedl gang" caption="kubedl gang schedule" div align="center" >}}
+{{< img src="kubedl-gangschedule.png" alt="kubedl gang" caption="kubedl gang schedule" align="center" >}}
 
 ### How to Enable
 
