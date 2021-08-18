@@ -1,11 +1,34 @@
-<div class="ratio ratio-{{ with .Get "ratio" }}{{.}}{{ end }}">
-  <video{{ with .Get "attributes" }} {{ . | safeHTMLAttr }}{{ end }}>
-    {{ with .Get "webm-src" -}}
-      <source src="{{ . | relURL }}" type="video/webm">
-    {{ end -}}
-    {{ with .Get "mp4-src" -}}
-      <source src="{{ . | relURL }}" type="video/mp4">
-    {{ end -}}
-    Sorry, your browser doesn't support embedded videos.
-  </video>
+<!--<div class="ratio ratio-{{ with .Get "ratio" }}{{.}}{{ end }}">-->
+<!--  <video{{ with .Get "attributes" }} {{ . | safeHTMLAttr }}{{ end }}>-->
+<!--    {{ with .Get "webm-src" -}}-->
+<!--      <source src="{{ . | relURL }}" type="video/webm">-->
+<!--    {{ end -}}-->
+<!--    {{ with .Get "mp4-src" -}}-->
+<!--      <source src="{{ . | relURL }}" type="video/mp4">-->
+<!--    {{ end -}}-->
+<!--    Sorry, your browser doesn't support embedded videos.-->
+<!--  </video>-->
+<!--</div>-->
+
+<div class="container">
+  <div id="player-wrapper" class="{{ .Get 1 }}"></div>
 </div>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+</script>
+
+<script>
+  var playerElement = document.getElementById("player-wrapper");
+
+  var player = new Clappr.Player({
+    source: {{ .Get 0 }},
+  mute: true,
+    height: 360,
+    width: 640
+  });
+
+  player.attachTo(playerElement);
+</script>
