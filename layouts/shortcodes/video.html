@@ -1,15 +1,3 @@
-<!--<div class="ratio ratio-{{ with .Get "ratio" }}{{.}}{{ end }}">-->
-<!--  <video{{ with .Get "attributes" }} {{ . | safeHTMLAttr }}{{ end }}>-->
-<!--    {{ with .Get "webm-src" -}}-->
-<!--      <source src="{{ . | relURL }}" type="video/webm">-->
-<!--    {{ end -}}-->
-<!--    {{ with .Get "mp4-src" -}}-->
-<!--      <source src="{{ . | relURL }}" type="video/mp4">-->
-<!--    {{ end -}}-->
-<!--    Sorry, your browser doesn't support embedded videos.-->
-<!--  </video>-->
-<!--</div>-->
-
 <div class="container">
   <div id="player-wrapper" class="{{ .Get 1 }}"></div>
 </div>

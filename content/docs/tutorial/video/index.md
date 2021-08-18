@@ -1,9 +1,9 @@
 ---
 title: "Video Demo"
-description: "A video demo of using KubeDL for constructing a simple DL pipeline."
-lead: "A video demo of using KubeDL for constructing a simple DL pipeline."
-date: 2021-08-19T15:26:42-07:00
-lastmod: 2021-08-19T15:26:42-07:00
+description: "A video demo of using KubeDL for model training and serving."
+lead: "A video demo of using KubeDL for model training and serving"
+date: 2021-04-07T15:35:16-07:00
+lastmod: 2021-04-07T15:35:16-07:00
 draft: false
 images: []
 menu:
