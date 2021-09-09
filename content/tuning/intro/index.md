@@ -16,6 +16,9 @@ KubeDL automatically tunes the best container-level configurations
 before an ML model is deployed as inference services.
 This auto-configuration workflow is developed as an independent project---**Morphling**.   [Github  →](https://github.com/alibaba/morphling)
 
+Morphling paper accepted at ACM Socc 2021:
+**Morphling: Fast, Near-Optimal Auto-Configuration for Cloud-Native Model Serving**
+
 ## Morphling Overview
 
 Morphling tunes the optimal configurations for your ML/DL model serving deployments.
