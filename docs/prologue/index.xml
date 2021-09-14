@@ -3,7 +3,7 @@ Introduction Key Features Support different kinds of deep learning training jobs
 brew install helm Check the helm website for more details.
 Install KubeDL From the root directory, run
 helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system You can override default values defined in values.yaml with --set flag. For example, set the custom cpu/memory resource:
-helm install kubedl .</description></item><item><title>Install Using Yaml</title><link>https://kubedl.io/docs/prologue/install-using-yaml/</link><pubDate>Tue, 30 Mar 2021 17:46:36 -0700</pubDate><guid>https://kubedl.io/docs/prologue/install-using-yaml/</guid><description>Install CRDs From project root directory, run
+helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system --set resources.</description></item><item><title>Install Using Yaml</title><link>https://kubedl.io/docs/prologue/install-using-yaml/</link><pubDate>Tue, 30 Mar 2021 17:46:36 -0700</pubDate><guid>https://kubedl.io/docs/prologue/install-using-yaml/</guid><description>Install CRDs From project root directory, run
 kubectl apply -f config/crd/bases/ Install KubeDL controller A single yaml file including everything: deployment, rbac etc.
 kubectl apply -f https://raw.githubusercontent.com/kubedl-io/kubedl/master/config/manager/all_in_one.yaml KubeDL controller is installed under kubedl-system namespace.
 The official KubeDL controller image is hosted under docker hub.
