@@ -1,5 +1,5 @@
 <footer class="footer text-muted">
-  <div class="container-xxl">
+  <div class="container">
     <div class="row">
       <div class="col-lg-8 order-last order-lg-first">
         <ul class="list-inline">
@@ -9,9 +9,27 @@
       <div class="col-lg-8 order-first order-lg-last text-lg-end">
         <ul class="list-inline">
           {{ range .Site.Menus.footer -}}
-            <li class="list-inline-item"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            <li class="list-inline-item"><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
           {{ end -}}
         </ul>
+      </div>
+      <div class="col-lg-8 order-first order-lg-last text-lg-end">
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div align="center">
+        <b>KUBEDL IS A CLOUD NATIVE COMPUTING FOUNDATION PROJECT
+        </b>
+      </div>
+
+      <div align="center">
+        <img src="https://camo.githubusercontent.com/8aee669db45b82619559ea89a92cfa656ef700a1eddb3aa4eefb140ec9187551/68747470733a2f2f7636642e696f2f5f7374617469632f636e63662d636f6c6f722e737667" width="500" title="">
+      </div>
+      <div align="center" style="width:800px; margin:0 auto";>
+        <p>The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage page.</a> </p>
       </div>
     </div>
   </div>

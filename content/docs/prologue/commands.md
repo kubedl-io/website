@@ -1,7 +1,7 @@
 ---
 title: "Commands"
-description: "Doks comes with commands for common tasks."
-lead: "Doks comes with commands for common tasks."
+description: "Commands for jobs"
+lead: "Example commands for create, get, delete jobs."
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2020-10-13T15:21:01+02:00
 draft: false
@@ -9,90 +9,42 @@ images: []
 menu:
   docs:
     parent: "prologue"
-weight: 130
+weight: 500
 toc: true
 ---
+### Training Job kind
+- tfjob
+- pytorchjob
+- marsjob
+- mpijob
+- xdljob
+- elasticdljob
+- xgboostjob
 
-{{< alert icon="💡" text="You can change the commands in the scripts section of `./package.json`." />}}
+### Other Workload Kind
+- cron
 
-## create
+These kinds can be used in the kubectl command.
 
-Create new content for your site:
+### Submit
 
 ```bash
-npm run create [path] [flags]
+kubectl apply -f https://raw.githubusercontent.com/alibaba/kubedl/v0.3.0/example/tf/tf_job_mnist.yaml
+```
+### List
+
+```bash
+kubectl get tfjobs -n kubedl
 ```
 
-See also the Hugo docs: [hugo new](https://gohugo.io/commands/hugo_new/).
-
-## lint
-
-Check scripts, styles, and markdown for errors:
+### Get
 
 ```bash
-npm run lint
+kubectl describe tfjob mnist -n kubedl
 ```
 
-### scripts
-
-Check scripts for errors:
+### Delete
 
 ```bash
-npm run lint:scripts [-- --fix]
-```
-
-### styles
-
-Check styles for errors:
-
-```bash
-npm run lint:styles [-- --fix]
-```
-
-### markdown
-
-Check markdown for errors:
-
-```bash
-npm run lint:markdown [-- --fix]
-```
-
-## clean
-
-Delete temporary directories:
-
-```bash
-npm run clean
-```
-
-## start
-
-Start local development server:
-
-```bash
-npm run start
-```
-
-## build
-
-Build production website:
-
-```bash
-npm run build
-```
-
-### functions
-
-Build Lambda functions:
-
-```bash
-npm run build:functions
-```
-
-### preview
-
-Build production website including draft and future content:
-
-```bash
-npm run build:preview
+kubectl delete tfjob mnist -n kubedl
 ```

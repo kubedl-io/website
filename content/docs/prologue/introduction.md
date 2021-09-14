@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
-description: "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
-lead: "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+description: "KubeDL runs your deep learning workloads on Kubernetes."
+lead: ""
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
@@ -12,47 +12,43 @@ menu:
 weight: 100
 toc: true
 ---
+Currently, KubeDL supports running [TensorFlow](https://github.com/tensorflow/tensorflow), [PyTorch](https://github.com/pytorch/pytorch),
+[XGBoost](https://github.com/dmlc/xgboost), [Mars](https://github.com/mars-project/mars) and MPI distributed training jobs on Kubernetes.
+
+## Key Features
+- Support different kinds of deep learning training jobs in a single controller. You don't need to run each controller for each job kind.
+- Expose unified [prometheus metrics]({{< ref "metrics" >}}) for job stats.
+- Save job metadata in a pluggable storage backend such as Mysql to outlive api-server state.
+- [Sync files]({{< ref "code-sync" >}}) on container launch. You no longer need to rebuild the image to include the custom code every time.
+- Run jobs with host network.
+- Support advanced scheduling features such as gang scheduling.
+- [Work-in-progress] a catchy [dashboard](#job-dashboard) !
 
 ## Get started
 
-There are two main ways to get started with Doks:
+There are two main ways to install KubeDL.
 
-### Tutorial
+### Install using Helm
 
-{{< alert icon="👉" text="The Tutorial is intended for novice to intermediate users." />}}
+Install KubeDL using Helm charts. [Go →]({{< ref "install-using-helm" >}})
 
-Step-by-step instructions on how to start a new Doks project. [Tutorial →](https://getdoks.org/tutorial/introduction/)
 
-### Quick Start
+### Install using YAML files
 
-{{< alert icon="👉" text="The Quick Start is intended for intermediate to advanced users." />}}
+Install KubeDL using YAML files. [Go →]({{< ref "quick-start" >}})
 
-One page summary of how to start a new Doks project. [Quick Start →]({{< relref "quick-start" >}})
+## Recipes
 
-## Go further
+Get instructions on how to accomplish common tasks with KubeDL. [Recipes →](https://getdoks.org/docs/recipes/project-configuration/)
 
-Recipes, Reference Guides, Extensions, and Showcase.
+## Reference
 
-### Recipes
-
-Get instructions on how to accomplish common tasks with Doks. [Recipes →](https://getdoks.org/docs/recipes/project-configuration/)
-
-### Reference Guides
-
-Learn how to customize Doks to fully make it your own. [Reference Guides →](https://getdoks.org/docs/reference-guides/security/)
-
-### Extensions
-
-Get instructions on how to add even more to Doks. [Extensions →](https://getdoks.org/docs/extensions/breadcrumb-navigation/)
-
-### Showcase
-
-See what others have build with Doks. [Showcase →](https://getdoks.org/showcase/electric-blocks/)
+References for CRD apis, metrics etc. [Reference →]({{< ref "docs/references" >}})
 
 ## Contributing
 
-Find out how to contribute to Doks. [Contributing →](https://getdoks.org/docs/contributing/how-to-contribute/)
+Find out how to contribute to KubeDL. [Contributing →]({{< ref "how-to-contribute" >}})
 
 ## Help
 
-Get help on Doks. [Help →]({{< relref "how-to-update" >}})
+Get help on KubeDL. [Help →]({{< ref "help" >}})

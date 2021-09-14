@@ -6,25 +6,21 @@ date: 2020-11-12T15:22:20+01:00
 lastmod: 2020-11-12T15:22:20+01:00
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "help"
 weight: 620
 toc: true
 ---
 
-## Problems updating npm packages
-
-Delete the `./node_modules` folder, and run again:
+## Logs
 
 ```bash
-npm install
+kubectl logs kubedl-controller-manager-0 -n kubedl-system
 ```
 
-## Problems with cache
-
-Delete the temporary directories:
+## Pod status
 
 ```bash
-npm run clean
+kubectl describe pod kubedl-controller-manager-0 -n kubedl-system
 ```
