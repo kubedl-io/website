@@ -33,34 +33,37 @@ metadata:
   name: mv-3
   namespace: default
 spec:
-  modelName: model1                     // The model name for the model version
-  createdBy: user1                      // The entity (user or training job) that creates the model
-  imageRepo: modelhub/resnet            // The image repo to push the generated model
+  # The model name for the model version
+  modelName: model1
+  # The entity (user or training job) that creates the model
+  createdBy: user1
+  # The image repo to push the generated model
+  imageRepo: modelhub/resnet
+  # The storage will be mounted at /kubedl-model inside the training container.
+  # Therefore, the training code should export the model at /kubedl-model path.
   storage:
-    localStorage:                       // The local storage to store the model
-      path: /foo                        // The local host path to export the model
-      nodeName: kind-control-plane      // The node where the chief worker run to export the model
+    # The local storage to store the model
+    localStorage:
+      # The local host path to export the model
+      path: /foo
+       # The node where the chief worker run to export the model
+      nodeName: kind-control-plane
 ```
 
-#### Pre-defined KubeDL model path in container
-
-KubeDL pre-defines the path to store the model inside the container as `/kubedl-model`
-
-The model storage such as local fs, nfs will be mounted to /kubedl-model inside each training container. Hence,
+KubeDL mounts the storage such as local fs, nfs at `/kubedl-model` inside each training container by default. Therefore,
 the training code inside the container must export the model under `/kubedl-model`, so that it is also present on the external storage.
-The ModelVersion controller will trigger a Kaniko container to include the model in the built image.
 
-Each container is also automatically injected with an ENV as `KUBEDL_MODEL_PATH=/kubedl-model`. The code can also get
-the path by looking up the ENV.
+The ModelVersion controller will then trigger a Kaniko container mounted with the same storage and generate an image that includes the
+model artifacts at `/kubedl-model` path.
+KubeDL also automatically injects an ENV  `KUBEDL_MODEL_PATH=/kubedl-model` into the generated model image.
 
 ### Model
 
-Model captures multiple versions for a model. The `Model` currently just provides some information
-about the ModelVersion in the status, such as the latest ModelVersion. Once the Model is deleted, all the ModelVersions are cascadingly deleted.
+Model is associated with multiple ModelVersions. It just aggregates some information about the ModelVersions in its status, such as the latest ModelVersion like below.
+Once the Model is deleted, all its ModelVersions are cascadingly deleted.
 Check the full [CRD spec.](https://github.com/alibaba/kubedl/blob/master/apis/model/v1alpha1/model_types.go)
 
 ```YAML
-  spec: {}
   status:
     latestVersion:
       imageName: modelhub/resnet:v1c072

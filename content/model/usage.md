@@ -15,36 +15,31 @@ toc: true
 
 ## Create a ModelVersion from training job
 
-KubeDL training already supports generating a ModelVersion CRD when the job completes. Thus, a model image is
+KubeDL training already supports generating a ModelVersion when the job completes. Thus, a model image is
 automatically generated after job succeeds.
 
-To enable this feature, the TensorFlow job spec needs to set the modelVersion field like the example below:
-
-This example uses hostpath volume. The job will first generate the model artifacts under `/kubedl-model` inside the training
-container. Correspondingly, the model will be preset on the local host path `/models/mymodel`.
-Then a ModelVersion CRD is created and that triggeres a Kaniko container to incorporate the model artifacts and push to modelhub/mnist.
-The model artificats will be present at '/kubedl-model' inside the built image.
-
-Note that the container command needs to specify `/kubedl_model` as the model export path. Allowing user-specified path will be supported later
+To enable this feature, the TensorFlow job spec needs to set the `modelVersion` field like the example below:
 
 ```yaml
 apiVersion: "training.kubedl.io/v1alpha1"
 kind: "TFJob"
 metadata:
-  name: "distributed-bbb"
+  name: "distributed-tfjob"
 spec:
   cleanPodPolicy: None
   # modelVersion defines the location where the model is stored.
   modelVersion:
+    # The model name for the model version
     modelName: mymodel
     # The dockerhub repo to push the generated image
     imageRepo: jianhe6/mymodel
     storage:
       # Use hostpath, NFS is also supported.
       localStorage:
-        # The host dir for THIS model, each modelVersion should have its own unique parent folder, in this case, 'mymodel'
+        # The host path for storing the generated model.
+        # Each job should have its own unique parent folder, in this case, 'mymodel', so that multiple ModelVersions are not collided into the same folder.
         path: /models/mymodel
-        # The node for storing the model
+        # The node where the chief worker run to store the model
         nodeName: kind-control-plane
   tfReplicaSpecs:
     Worker:
@@ -62,12 +57,18 @@ spec:
                 - "/tmp/tfkeras_example/" # model checkpoint dir
                 - "/kubedl-model"         # export dir for the saved_model format
 ```
+This example uses hostpath volume. The training code will first generate the model artifacts under `/kubedl-model` inside the training
+container. Correspondingly, the model will be preset on the local host path `/models/mymodel`.
+Then KubeDL create a ModelVersion CRD that triggers a Kaniko container to generate an image that contains the model artifacts at `/kubedl-model`, and also push that to docker hub at`modelhub/mnist`.
+
+Note that the training code needs to specify `/kubedl_model` as the model export path as in the above example. Allowing user-specified path will be supported later.
 
 A Model CRD is also automatically generated with ModelVersion's ownerReference point the Model.
 
 ## Create a ModelVersion Manually
+A ModelVersion can also be created manually pointing to an existing external storage.
 
-This `ModelVersion` CRD will generate an image at `modelhub/model1` in dockerhub, including the model artifacts located at `node1`'s local path at `/foo`
+This `ModelVersion` CRD will generate a model image at `modelhub/model1` in dockerhub, including the model artifacts from `node1`'s local path at `/foo`
 
 ```YAML
 apiVersion: model.kubedl.io/v1alpha1
@@ -85,13 +86,13 @@ spec:
       nodeName: node1
 ```
 
-```bash
+```shell script
 kubectl get mv (short for modelversion)
 NAME                       MODEL    IMAGE                   CREATED-BY   FINISH-TIME
 mv-4                       model1   modelhub/model1:v1c072   user1        2021-04-19T21:45:29Z
 ```
 
-```bash
+```shell script
 kubectl describe mv mv-4
 
 ...
@@ -109,3 +110,6 @@ Status:
   Image Build Phase:  ImageBuildSucceeded
   Message:            Image build succeeded.
 ```
+## Tutorial
+- An e2e tutorial from KubeDL training, model and serving. [Go->]({{< ref "docs/tutorial/tutorial" >}})
+- An e2e video tutorial. [Go->]({{< ref "docs/tutorial/video" >}})

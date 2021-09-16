@@ -71,12 +71,13 @@ spec:
                 - "/kubedl-model"         # export dir for the saved_model format
 ```
 
-This example stores the trained model at a hostpath, in this case `/models/mymodelv1`. KubeDL will automatically
-create a container image that includes the model artifacts within that folder and push that to the dockerhub.
+This example stores the trained model artifacts at a hostpath, in this case `/models/mymodelv1`. KubeDL will
+create an image that includes those model artifacts and push that to the dockerhub.
 
 Notes：
-1. `modelVersion` field defines where the model is stored. Currently, local hostpath and NFS are supported.
-2. `/kubedl-model` is the pre-defined location for storing the trained model inside the model image. The training code is expected to export the model in this location.
+1. `modelVersion` field defines where the modelVersion is stored. Currently, local hostpath and NFS are supported.
+2. `/kubedl-model` is the pre-defined location where the external storage is mounted into the training code.
+Therefore, the training should export the model artifacts under this folder so that it is present externally.
 Check the [documentation]({{< ref "model/usage" >}}) for more details
 
 
@@ -86,26 +87,26 @@ After the job succeeded, run `kubect get tfjob`:
 
 ```bash
 NAME              STATE       AGE   TTL-AFTER-FINISHED   MAX-LIFETIME   MODEL-VERSION
-tf-distributed    Succeeded   45s                                       model-version-tf-distributed
+tf-distributed    Succeeded   45s                                       mv-tf-distributed
 ```
 
-Here, a ModelVersion named `model-version-tf-distributed` is created.
+Here, a ModelVersion named `mv-tf-distributed` is created.
 
-The naming convention of the ModelVersion is to prepend the `model-version` to the job name as such: `model-version-<JobName>`
+The naming convention of the ModelVersion is to prepend the `mv` to the job name as such: `mv-<JobName>`
 
 ## Inspect the model version
 
-There are [`Model` and `ModelVersion`]({{< ref "model/intro" >}}) . In short, `Model` associates with a series of `ModelVersion`s.
+There are [`Model` and `ModelVersion`]({{< ref "model/intro" >}}) . In short, `Model` associates with multiple `ModelVersion`s.
 
 Inspect the model version
 
 ```bash
 $ kubectl get mv
-NAME                           MODEL     IMAGE                    CREATED-BY       FINISH-TIME
-model-version-tf-distributed   mymodel   jianhe6/mymodel:vf812c   tf-distributed   2021-07-24T00:39:02Z
+NAME                   MODEL     IMAGE                    CREATED-BY       FINISH-TIME
+mv-tf-distributed      mymodel   jianhe6/mymodel:vf812c   tf-distributed   2021-07-24T00:39:02Z
 ```
 
-ModelVersion `model-version-tf-distributed` belongs to model `mymodel`. The image incorporating the model is `jianhe6/mymodel:vf812c`.
+ModelVersion `mv-tf-distributed` belongs to model `mymodel`. The model image is `jianhe6/mymodel:vf812c`.
 It is created by job `tf-distributed` at `2021-07-24T00:39:02Z`
 
 
@@ -121,29 +122,29 @@ Two jobs, each has its own model version.
 ```bash
 $ kubectl get tfjob
 NAME               STATE       AGE     TTL-AFTER-FINISHED   MAX-LIFETIME   MODEL-VERSION
-tf-distributed     Succeeded   3m57s                                       model-version-tf-distributed
-tf-distributed-2   Succeeded   24s                                         model-version-tf-distributed-2
+tf-distributed     Succeeded   3m57s                                       mv-tf-distributed
+tf-distributed-2   Succeeded   24s                                         mv-tf-distributed-2
 ```
 
 Check the model version. We get two. Each has its own generated model image.
 
 ```bash
 $ kubectl get mv
-NAME                             MODEL     IMAGE                    CREATED-BY         FINISH-TIME
-model-version-tf-distributed     mymodel   jianhe6/mymodel:vf812c   tf-distributed     2021-07-24T00:39:02Z
-model-version-tf-distributed-2   mymodel   jianhe6/mymodel:vc73be   tf-distributed-2   2021-07-24T00:42:28Z
+NAME                    MODEL     IMAGE                    CREATED-BY         FINISH-TIME
+mv-tf-distributed       mymodel   jianhe6/mymodel:vf812c   tf-distributed     2021-07-24T00:39:02Z
+mv-tf-distributed-2     mymodel   jianhe6/mymodel:vc73be   tf-distributed-2   2021-07-24T00:42:28Z
 ```
 
 Now, check the model,
 
 ```bash
 $ kubectl get model
-NAME      LATEST-VERSION                   LATEST-IMAGE
-mymodel   model-version-tf-distributed-2   jianhe6/mymodel:vc73be
+NAME      LATEST-VERSION          LATEST-IMAGE
+mymodel   mv-tf-distributed-2     jianhe6/mymodel:vc73be
 ```
 The model named `mymodel`, has the latest model version named ` model-version-tf-distributed-2`, and its latest model image is `jianhe6/mymodel:vc73be`
 
-Deleting the model will  delete all its model versions.
+Deleting the model will delete all its model versions.
 
 ## Inspect the model image content
 
@@ -155,7 +156,7 @@ Run `docker run -it jianhe6/mymodel:vc73be /bin/sh`, and then run `ls /kubedl-mo
 $ ls /kubedl-model/1627086141
 assets          saved_model.pb  variables
 ```
-Here, the `1627086141/` parent folder is automatically created by the training code library.
+Here, the `1627086141/` parent folder is created by the training code as its version id.
 
 
 ## Serve the model
@@ -178,7 +179,8 @@ spec:
     - name: model-predictor
       # The model version to be served
       modelVersion: mv-tf-distributed-5f4c7
-      # The model path inside the container, it's the tensorflow serving model_base_path
+      # The model path where the model is mounted inside the container,
+      # it should be the same as the tensorflow serving model_base_path
       modelPath: /kubedl-model
       replicas: 1
       batching:
@@ -191,7 +193,8 @@ spec:
                 - --port=9000
                 - --rest_api_port=8500
                 - --model_name=mnist
-                - --model_base_path=/kubedl-model/  # This should be the same as modelPath field.
+                # This should be the same as modelPath field.
+                - --model_base_path=/kubedl-model/
               command:
                 - /usr/bin/tensorflow_model_server
               image: tensorflow/serving:1.11.1
@@ -207,6 +210,8 @@ spec:
                   cpu: 1024m
                   memory: 1Gi
 ```
+Note that the `--model_base_path` option of TensorFlow serving needs to be the same as the `modelPath` spec in the field,
+which indicates where the model is mounted into the container.
 
 Inspect the Inference workload state
 
