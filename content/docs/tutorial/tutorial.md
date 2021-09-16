@@ -52,6 +52,9 @@ spec:
       localStorage:
         # The host dir for THIS model version, each modelVersion should have its own unique parent folder, in this case, 'mymodelv1'
         path: /models/mymodelv1
+        # The mounted path inside the container.
+        # The training code is expected to export the model under this path, such as storing the tensorflow saved_model.
+        mountPath: /kubedl-model
         # The node for storing the model
         nodeName: kind-control-plane
   tfReplicaSpecs:
@@ -76,16 +79,16 @@ create an image that includes those model artifacts and push that to the dockerh
 
 Notes：
 1. `modelVersion` field defines where the modelVersion is stored. Currently, local hostpath and NFS are supported.
-2. `/kubedl-model` is the pre-defined location where the external storage is mounted into the training code.
-Therefore, the training should export the model artifacts under this folder so that it is present externally.
+2. `mountPath` defines the path where the external storage is mounted. The training code should export the model artifacts such as the TensorFlow saved_model under this path.
 Check the [documentation]({{< ref "model/usage" >}}) for more details
 
 
 ## Inspect the job
 
-After the job succeeded, run `kubect get tfjob`:
+After the job succeeded, run:
 
 ```bash
+$ kubectl get tfjob
 NAME              STATE       AGE   TTL-AFTER-FINISHED   MAX-LIFETIME   MODEL-VERSION
 tf-distributed    Succeeded   45s                                       mv-tf-distributed
 ```
@@ -112,9 +115,10 @@ It is created by job `tf-distributed` at `2021-07-24T00:39:02Z`
 
 ## Run the job again
 
-This time we made some changes to the code, and we change the job name to `tf-distributed-2` and
-change the `localstorage.path` to `/models/mymodelv2`, so that the new model version will be stored at hostpath `/models/mymodelv2`,
-and run it again.
+This time suppose we made some changes to the training code. We then change the job name to `tf-distributed-2` and
+change the `modelVersion.localStorage.path` field to `/models/mymodelv2`, so that the new model version will be stored at hostpath `/models/mymodelv2` and not colliding with `/models/mymodelv1`
+
+Run it again with `kubectl apply -f kubectl apply -f example/tf/tf_job_mnist_modelversion.yaml`.
 
 Once the job finishes, we get below output:
 

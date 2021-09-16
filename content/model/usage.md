@@ -39,6 +39,9 @@ spec:
         # The host path for storing the generated model.
         # Each job should have its own unique parent folder, in this case, 'mymodel', so that multiple ModelVersions are not collided into the same folder.
         path: /models/mymodel
+        # The mounted path inside the container.
+        # The training code is expected to export the model under this path, such as storing the tensorflow saved_model.
+        mountPath: /kubedl-model
         # The node where the chief worker run to store the model
         nodeName: kind-control-plane
   tfReplicaSpecs:
@@ -59,16 +62,16 @@ spec:
 ```
 This example uses hostpath volume. The training code will first generate the model artifacts under `/kubedl-model` inside the training
 container. Correspondingly, the model will be preset on the local host path `/models/mymodel`.
-Then KubeDL create a ModelVersion CRD that triggers a Kaniko container to generate an image that contains the model artifacts at `/kubedl-model`, and also push that to docker hub at`modelhub/mnist`.
+Then KubeDL creates a ModelVersion CR that triggers a Kaniko container to generate an image that contains the model artifacts at `/kubedl-model`, and also push that to docker hub at`modelhub/mnist`.
 
-Note that the training code needs to specify `/kubedl_model` as the model export path as in the above example. Allowing user-specified path will be supported later.
+Note that the training code needs to specify `/kubedl_model` as the model export path (the same as the mountPath in storage).
 
-A Model CRD is also automatically generated with ModelVersion's ownerReference point the Model.
+KubeDL also creates a Model object with the ModelVersion's ownerReference pointing the Model.
 
 ## Create a ModelVersion Manually
 A ModelVersion can also be created manually pointing to an existing external storage.
 
-This `ModelVersion` CRD will generate a model image at `modelhub/model1` in dockerhub, including the model artifacts from `node1`'s local path at `/foo`
+This `ModelVersion` CR will generate a model image at `modelhub/model1` in dockerhub, including the model artifacts from `node1`'s local path at `/foo`
 
 ```YAML
 apiVersion: model.kubedl.io/v1alpha1

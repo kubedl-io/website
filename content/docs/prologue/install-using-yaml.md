@@ -33,7 +33,14 @@ KubeDL controller is installed under `kubedl-system` namespace.
 
 The official KubeDL controller image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).
 
-## Uninstall KubeDL controller
+## Install the KubeDL Dashboard
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubedl-io/kubedl/master/console/dashboard.yaml
+```
+The dashboard will list nodes. Hence, its service account requires the ``list node permission``. Check [dashboard]({{ref recipes/dashboard}}) for details.
+
+## Uninstall KubeDL controller and dashboard
 
 ```bash
 kubectl delete namespace kubedl-system
