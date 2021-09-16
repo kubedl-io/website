@@ -49,30 +49,31 @@ spec:
                 - &quot;/keras_model_to_estimator.py&quot;
                 - &quot;/tmp/tfkeras_example/&quot; # model checkpoint dir
                 - &quot;/kubedl-model&quot;         # export dir for the saved_model format
-</code></pre><p>This example stores the trained model at a hostpath, in this case <code>/models/mymodelv1</code>. KubeDL will automatically
-create a container image that includes the model artifacts within that folder and push that to the dockerhub.</p><p>Notes：</p><ol><li><code>modelVersion</code> field defines where the model is stored. Currently, local hostpath and NFS are supported.</li><li><code>/kubedl-model</code> is the pre-defined location for storing the trained model inside the model image. The training code is expected to export the model in this location.
+</code></pre><p>This example stores the trained model artifacts at a hostpath, in this case <code>/models/mymodelv1</code>. KubeDL will
+create an image that includes those model artifacts and push that to the dockerhub.</p><p>Notes：</p><ol><li><code>modelVersion</code> field defines where the modelVersion is stored. Currently, local hostpath and NFS are supported.</li><li><code>/kubedl-model</code> is the pre-defined location where the external storage is mounted into the training code.
+Therefore, the training should export the model artifacts under this folder so that it is present externally.
 Check the <a href=https://kubedl.io/model/usage/>documentation</a> for more details</li></ol><h2 id=inspect-the-job>Inspect the job<a href=#inspect-the-job class=anchor aria-hidden=true>#</a></h2><p>After the job succeeded, run <code>kubect get tfjob</code>:</p><pre><code class=language-bash>NAME              STATE       AGE   TTL-AFTER-FINISHED   MAX-LIFETIME   MODEL-VERSION
-tf-distributed    Succeeded   45s                                       model-version-tf-distributed
-</code></pre><p>Here, a ModelVersion named <code>model-version-tf-distributed</code> is created.</p><p>The naming convention of the ModelVersion is to prepend the <code>model-version</code> to the job name as such: <code>model-version-&lt;JobName></code></p><h2 id=inspect-the-model-version>Inspect the model version<a href=#inspect-the-model-version class=anchor aria-hidden=true>#</a></h2><p>There are <a href=https://kubedl.io/model/intro/><code>Model</code> and <code>ModelVersion</code></a> . In short, <code>Model</code> associates with a series of <code>ModelVersion</code>s.</p><p>Inspect the model version</p><pre><code class=language-bash>$ kubectl get mv
-NAME                           MODEL     IMAGE                    CREATED-BY       FINISH-TIME
-model-version-tf-distributed   mymodel   jianhe6/mymodel:vf812c   tf-distributed   2021-07-24T00:39:02Z
-</code></pre><p>ModelVersion <code>model-version-tf-distributed</code> belongs to model <code>mymodel</code>. The image incorporating the model is <code>jianhe6/mymodel:vf812c</code>.
+tf-distributed    Succeeded   45s                                       mv-tf-distributed
+</code></pre><p>Here, a ModelVersion named <code>mv-tf-distributed</code> is created.</p><p>The naming convention of the ModelVersion is to prepend the <code>mv</code> to the job name as such: <code>mv-&lt;JobName></code></p><h2 id=inspect-the-model-version>Inspect the model version<a href=#inspect-the-model-version class=anchor aria-hidden=true>#</a></h2><p>There are <a href=https://kubedl.io/model/intro/><code>Model</code> and <code>ModelVersion</code></a> . In short, <code>Model</code> associates with multiple <code>ModelVersion</code>s.</p><p>Inspect the model version</p><pre><code class=language-bash>$ kubectl get mv
+NAME                   MODEL     IMAGE                    CREATED-BY       FINISH-TIME
+mv-tf-distributed      mymodel   jianhe6/mymodel:vf812c   tf-distributed   2021-07-24T00:39:02Z
+</code></pre><p>ModelVersion <code>mv-tf-distributed</code> belongs to model <code>mymodel</code>. The model image is <code>jianhe6/mymodel:vf812c</code>.
 It is created by job <code>tf-distributed</code> at <code>2021-07-24T00:39:02Z</code></p><h2 id=run-the-job-again>Run the job again<a href=#run-the-job-again class=anchor aria-hidden=true>#</a></h2><p>This time we made some changes to the code, and we change the job name to <code>tf-distributed-2</code> and
 change the <code>localstorage.path</code> to <code>/models/mymodelv2</code>, so that the new model version will be stored at hostpath <code>/models/mymodelv2</code>,
 and run it again.</p><p>Once the job finishes, we get below output:</p><p>Two jobs, each has its own model version.</p><pre><code class=language-bash>$ kubectl get tfjob
 NAME               STATE       AGE     TTL-AFTER-FINISHED   MAX-LIFETIME   MODEL-VERSION
-tf-distributed     Succeeded   3m57s                                       model-version-tf-distributed
-tf-distributed-2   Succeeded   24s                                         model-version-tf-distributed-2
+tf-distributed     Succeeded   3m57s                                       mv-tf-distributed
+tf-distributed-2   Succeeded   24s                                         mv-tf-distributed-2
 </code></pre><p>Check the model version. We get two. Each has its own generated model image.</p><pre><code class=language-bash>$ kubectl get mv
-NAME                             MODEL     IMAGE                    CREATED-BY         FINISH-TIME
-model-version-tf-distributed     mymodel   jianhe6/mymodel:vf812c   tf-distributed     2021-07-24T00:39:02Z
-model-version-tf-distributed-2   mymodel   jianhe6/mymodel:vc73be   tf-distributed-2   2021-07-24T00:42:28Z
+NAME                    MODEL     IMAGE                    CREATED-BY         FINISH-TIME
+mv-tf-distributed       mymodel   jianhe6/mymodel:vf812c   tf-distributed     2021-07-24T00:39:02Z
+mv-tf-distributed-2     mymodel   jianhe6/mymodel:vc73be   tf-distributed-2   2021-07-24T00:42:28Z
 </code></pre><p>Now, check the model,</p><pre><code class=language-bash>$ kubectl get model
-NAME      LATEST-VERSION                   LATEST-IMAGE
-mymodel   model-version-tf-distributed-2   jianhe6/mymodel:vc73be
+NAME      LATEST-VERSION          LATEST-IMAGE
+mymodel   mv-tf-distributed-2     jianhe6/mymodel:vc73be
 </code></pre><p>The model named <code>mymodel</code>, has the latest model version named <code>model-version-tf-distributed-2</code>, and its latest model image is <code>jianhe6/mymodel:vc73be</code></p><p>Deleting the model will delete all its model versions.</p><h2 id=inspect-the-model-image-content>Inspect the model image content<a href=#inspect-the-model-image-content class=anchor aria-hidden=true>#</a></h2><p>Download the model image and inspect its contents. The model artifacts will be under <code>/kubedl-model</code>.</p><p>Run <code>docker run -it jianhe6/mymodel:vc73be /bin/sh</code>, and then run <code>ls /kubedl-model</code> inside the container:</p><pre><code class=language-bash>$ ls /kubedl-model/1627086141
 assets          saved_model.pb  variables
-</code></pre><p>Here, the <code>1627086141/</code> parent folder is automatically created by the training code library.</p><h2 id=serve-the-model>Serve the model<a href=#serve-the-model class=anchor aria-hidden=true>#</a></h2><p>Run an Inference workload</p><pre><code class=language-bash>kubectl apply -f example/tf/tf_serving_modelversion.yaml
+</code></pre><p>Here, the <code>1627086141/</code> parent folder is created by the training code as its version id.</p><h2 id=serve-the-model>Serve the model<a href=#serve-the-model class=anchor aria-hidden=true>#</a></h2><p>Run an Inference workload</p><pre><code class=language-bash>kubectl apply -f example/tf/tf_serving_modelversion.yaml
 </code></pre><p>The YAML content looks like below:</p><pre><code class=language-yaml>apiVersion: serving.kubedl.io/v1alpha1
 kind: Inference
 metadata:
@@ -83,7 +84,8 @@ spec:
     - name: model-predictor
       # The model version to be served
       modelVersion: mv-tf-distributed-5f4c7
-      # The model path inside the container, it's the tensorflow serving model_base_path
+      # The model path where the model is mounted inside the container,
+      # it should be the same as the tensorflow serving model_base_path
       modelPath: /kubedl-model
       replicas: 1
       batching:
@@ -96,7 +98,8 @@ spec:
                 - --port=9000
                 - --rest_api_port=8500
                 - --model_name=mnist
-                - --model_base_path=/kubedl-model/  # This should be the same as modelPath field.
+                # This should be the same as modelPath field.
+                - --model_base_path=/kubedl-model/
               command:
                 - /usr/bin/tensorflow_model_server
               image: tensorflow/serving:1.11.1
@@ -111,8 +114,9 @@ spec:
                 requests:
                   cpu: 1024m
                   memory: 1Gi
-</code></pre><p>Inspect the Inference workload state</p><pre><code class=language-bash>kubectl get inference
+</code></pre><p>Note that the <code>--model_base_path</code> option of TensorFlow serving needs to be the same as the <code>modelPath</code> spec in the field,
+which indicates where the model is mounted into the container.</p><p>Inspect the Inference workload state</p><pre><code class=language-bash>kubectl get inference
 </code></pre><div class=my-n3></div></main></div></div></div><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"></div></div></div><div class=container><div class=row><div align=center><b>KUBEDL IS A CLOUD NATIVE COMPUTING FOUNDATION PROJECT</b></div><div align=center><img src=https://camo.githubusercontent.com/8aee669db45b82619559ea89a92cfa656ef700a1eddb3aa4eefb140ec9187551/68747470733a2f2f7636642e696f2f5f7374617469632f636e63662d636f6c6f722e737667 width=500 title></div><div align=center style="width:800px;margin:0 auto" ;><p>The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href=https://www.linuxfoundation.org/trademark-usage/>Trademark Usage page.</a></p></div></div></div></footer><script src=/js/bootstrap.min.73ca27033146a505b6a0f66b79d99f613a18e778bc9606fd223476d0ebf0fc10508b0d4f5c448b0a946fa1d71fbeffaae9732adc0c2890e61c449217fd6ee1c0.js integrity="sha512-c8onAzFGpQW2oPZredmfYToY53i8lgb9IjR20Ovw/BBQiw1PXESLCpRvodcfvv+q6XMq3AwokOYcRJIX/W7hwA==" crossorigin=anonymous defer></script>
 <script src=/js/highlight.min.e13cfba4c5524e30386cb9ea71f0f191f39d15b25b222f4b67549689f7c076158f42a2282446044f5cdacc76a6d003efbfa252a84aea0116703803b6339ae35f.js integrity="sha512-4Tz7pMVSTjA4bLnqcfDxkfOdFbJbIi9LZ1SWiffAdhWPQqIoJEYET1zazHam0APvv6JSqErqARZwOAO2M5rjXw==" crossorigin=anonymous defer></script>
 <script src=/main.min.bfb6b781dd5fd7177a7a9b3ce0bd84f12db95f6aa4e3fc7b339cd57879c38390d1e8d75cf314836a71201ba2fd6a2e26084a956704964c0bb884c26e9eff5ee1.js integrity="sha512-v7a3gd1f1xd6eps84L2E8S25X2qk4/x7M5zVeHnDg5DR6Ndc8xSDanEgG6L9ai4mCEqVZwSWTAu4hMJunv9e4Q==" crossorigin=anonymous defer></script>
-<script src=/index.min.26e7edb26de68ee5df4d0243fda85d8cdbdf8ad5bdecff2a0a9bff2288e824f1b91b2df18bee97d09a274446ea6a3a5186f031503e9a029dba9c4e50603b2429.js integrity="sha512-Juftsm3mjuXfTQJD/ahdjNvfitW97P8qCpv/IojoJPG5Gy3xi+6X0JonREbqajpRhvAxUD6aAp26nE5QYDskKQ==" crossorigin=anonymous defer></script></body></html>
+<script src=/index.min.96033595d4c940407759c1b1beb46a6c4e0509585872d097495b015fcb8830e9a9c134b177b6b46fc96e200d049980aad339f2013f697f3acf8d1f14086bc9d9.js integrity="sha512-lgM1ldTJQEB3WcGxvrRqbE4FCVhYctCXSVsBX8uIMOmpwTSxd7a0b8luIA0EmYCq0znyAT9pfzrPjR8UCGvJ2Q==" crossorigin=anonymous defer></script></body></html>
