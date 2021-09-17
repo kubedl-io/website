@@ -22,6 +22,9 @@ spec:
         # The host path for storing the generated model.
         # Each job should have its own unique parent folder, in this case, 'mymodel', so that multiple ModelVersions are not collided into the same folder.
         path: /models/mymodel
+        # The mounted path inside the container.
+        # The training code is expected to export the model under this path, such as storing the tensorflow saved_model.
+        mountPath: /kubedl-model
         # The node where the chief worker run to store the model
         nodeName: kind-control-plane
   tfReplicaSpecs:
@@ -41,7 +44,7 @@ spec:
                 - &quot;/kubedl-model&quot;         # export dir for the saved_model format
 </code></pre><p>This example uses hostpath volume. The training code will first generate the model artifacts under <code>/kubedl-model</code> inside the training
 container. Correspondingly, the model will be preset on the local host path <code>/models/mymodel</code>.
-Then KubeDL create a ModelVersion CRD that triggers a Kaniko container to generate an image that contains the model artifacts at <code>/kubedl-model</code>, and also push that to docker hub at<code>modelhub/mnist</code>.</p><p>Note that the training code needs to specify <code>/kubedl_model</code> as the model export path as in the above example. Allowing user-specified path will be supported later.</p><p>A Model CRD is also automatically generated with ModelVersion&rsquo;s ownerReference point the Model.</p><h2 id=create-a-modelversion-manually>Create a ModelVersion Manually<a href=#create-a-modelversion-manually class=anchor aria-hidden=true>#</a></h2><p>A ModelVersion can also be created manually pointing to an existing external storage.</p><p>This <code>ModelVersion</code> CRD will generate a model image at <code>modelhub/model1</code> in dockerhub, including the model artifacts from <code>node1</code>&rsquo;s local path at <code>/foo</code></p><pre><code class=language-YAML>apiVersion: model.kubedl.io/v1alpha1
+Then KubeDL creates a ModelVersion CR that triggers a Kaniko container to generate an image that contains the model artifacts at <code>/kubedl-model</code>, and also push that to docker hub at<code>modelhub/mnist</code>.</p><p>Note that the training code needs to specify <code>/kubedl_model</code> as the model export path (the same as the mountPath in storage).</p><p>KubeDL also creates a Model object with the ModelVersion&rsquo;s ownerReference pointing the Model.</p><h2 id=create-a-modelversion-manually>Create a ModelVersion Manually<a href=#create-a-modelversion-manually class=anchor aria-hidden=true>#</a></h2><p>A ModelVersion can also be created manually pointing to an existing external storage.</p><p>This <code>ModelVersion</code> CR will generate a model image at <code>modelhub/model1</code> in dockerhub, including the model artifacts from <code>node1</code>&rsquo;s local path at <code>/foo</code></p><pre><code class=language-YAML>apiVersion: model.kubedl.io/v1alpha1
 kind: ModelVersion
 metadata:
   name: mv-4
