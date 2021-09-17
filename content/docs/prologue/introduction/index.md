@@ -40,9 +40,9 @@ Install KubeDL using Helm charts. [Go →]({{< ref "install-using-helm" >}})
 
 Install KubeDL using YAML files. [Go →]({{< ref "quick-start" >}})
 
-## Recipes
+## Features
 
-Get instructions on how to accomplish common tasks with KubeDL. [Recipes →](https://getdoks.org/docs/recipes/project-configuration/)
+Highlighted features in KubeDL. [Features →]({{< ref "recipes">}})
 
 ## Reference
 
