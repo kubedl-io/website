@@ -31,9 +31,9 @@ Here are some dependents with specific version:
 
 ### Enable DCO
 
-KubeDL has enabled [DCO](https://github.com/apps/dco).
+KubeDL has enabled [DCO](https://github.com/apps/dco) ( Developer Certificate of Origin).
 Thus, you will need to sign-off your commits in your pull requests.
-Git has a `-s` command line option that can sign-off your commit automatically:
+Just add the `-s` option in your `git commit` and that will sign-off your commit automatically:
 ```
 git commit -s -m 'This is my commit message'
 ```
