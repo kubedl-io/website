@@ -14,6 +14,8 @@ toc: true
 ---
 This diagram illustrates the workflow from model generation to model deployment.
 
+In short, KubeDL training or user generates the KubeDL model and can then later by referenced by KubeDL Serving to serve the model directly.
+
 {{< img src="design.png" alt="design" caption="Workflow" >}}
 
 

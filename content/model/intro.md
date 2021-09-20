@@ -13,8 +13,10 @@ weight: 100
 toc: true
 ---
 
-KubeDL Model tracks a model's version and lineage in Kubernetes CRD. It leverages docker image to take versioning of a model.
+KubeDL Model tracks a model's version and lineage in Kubernetes CRD. It leverages container image to take versioning of a model.
 Each model version will generate a corresponding image that includes all the model artifacts.
+
+In short, KubeDL training generates the KubeDL model and can then later by referenced by KubeDL Serving to serve the model directly.
 
 KubeDL provides two CRDs `Model` and `ModelVersion` to accomplish this:
 
