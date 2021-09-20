@@ -13,7 +13,9 @@ weight: 200
 toc: true
 ---
 
-KubeDL controller docker images and are hosted at [docker hub](https://hub.docker.com/r/kubedl/kubedl).
+KubeDL controller [docker image](https://hub.docker.com/r/kubedl/kubedl).
 
-You can also find other examples' images at [here](https://hub.docker.com/r/kubedl/).
+KubeDL dashboard [docker image](https://hub.docker.com/r/kubedl/dashboard).
+
+You can also find other job examples' images at [here](https://hub.docker.com/r/kubedl/).
 

@@ -31,14 +31,15 @@ kubectl apply -f https://raw.githubusercontent.com/kubedl-io/kubedl/master/confi
 ```
 KubeDL controller is installed under `kubedl-system` namespace.
 
-The official KubeDL controller image is hosted under [docker hub](https://hub.docker.com/r/kubedl/kubedl).
+Running the command from master branch uses the [daily docker image.](https://hub.docker.com/r/kubedl/kubedl/tags?page=1&ordering=last_updated)
 
 ## Install the KubeDL Dashboard
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubedl-io/kubedl/master/console/dashboard.yaml
 ```
-The dashboard will list nodes. Hence, its service account requires the ``list node permission``. Check [dashboard]({{ref recipes/dashboard}}) for details.
+The dashboard will list nodes. Hence, its service account requires the ``list node permission``.
+Check the [dashboard.]({{< ref "docs/recipes/dashboard" >}})
 
 ## Uninstall KubeDL controller and dashboard
 

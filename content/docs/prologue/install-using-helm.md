@@ -28,6 +28,8 @@ From the root directory, run
 helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system
 ```
 
+Running the command from master branch uses the [daily docker image.](https://hub.docker.com/r/kubedl/kubedl/tags?page=1&ordering=last_updated)
+
 You can override default values defined in [values.yaml](https://github.com/alibaba/kubedl/blob/master/helm/kubedl/values.yaml) with `--set` flag.
 For example, set the custom cpu/memory resource:
 
