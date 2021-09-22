@@ -50,7 +50,7 @@ Helm will install CRDs and other Morphling components under `morphling-system` n
 helm uninstall morphling -n morphling-system
 ```
 
-## Delete all morphling CRDs
+## Delete all Morphling CRDs
 
 ```bash
 kubectl get crd | grep tuning.kubedl.io | cut -d ' ' -f 1 | xargs kubectl delete crd

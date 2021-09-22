@@ -28,25 +28,24 @@ The official Morphling component images are hosted under [docker hub](https://hu
 
  ```commandline
  kubectl create namespace morphling-system
-
- kubectl apply -f manifests/configmap
- kubectl apply -f manifests/controllers
- kubectl apply -f manifests/pv
- kubectl apply -f manifests/mysql-db
- kubectl apply -f manifests/db-manager
- kubectl apply -f manifests/algorithm
+ kubectl apply -k manifests/configmap
+ kubectl apply -k manifests/controllers
+ kubectl apply -k manifests/pv
+ kubectl apply -k manifests/mysql-db
+ kubectl apply -k manifests/db-manager
+ kubectl apply -k manifests/algorithm
  ```
 
 To deploy Morphling UI [Go →]({{< ref "tuning/ui" >}}), run
 
 
 ```bash
-kubectl apply -f manifests/ui
+kubectl apply -k manifests/ui
 ```
 
 By default, Morphling will be installed under `morphling-system` namespace.
 
-### Check Intsalling
+### Check Installing
 
 Check if all components are running successfully:
 

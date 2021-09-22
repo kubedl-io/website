@@ -19,7 +19,7 @@ If you are installing Morphling with Yaml files, from the root directory, run
 
 
 ```bash
-kubectl apply -f manifests/ui
+kubectl apply -k manifests/ui
 ```
 
 Or, if you are installing Morphling with Helm chart, Morphling UI is automatically deployed.
