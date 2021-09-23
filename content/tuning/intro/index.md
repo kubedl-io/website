@@ -7,14 +7,24 @@ lastmod: 2020-11-12T15:22:20+01:00
 draft: false
 images: []
 menu:
-  tuning:
-    parent: "tuningintro"
+tuning:
+parent: "tuningintro"
 weight: 100
 toc: true
 ---
 KubeDL automatically tunes the best container-level configurations
 before an ML model is deployed as inference services.
+<<<<<<< HEAD
+This auto-configuration workflow is developed as an independent project---**Morphling**.   [Github  →](https://github.com/alibaba/morphling)
+
+<figure>
+<h1 align="center">
+<img src="logo.png" alt="Morphling Stack" style="width:50%">
+</h1>
+</figure>
+=======
 This auto-configuration workflow is developed as an independent sub project called **Morphling**.   [Github  →](https://github.com/alibaba/morphling)
+>>>>>>> 1b2031758640ca595b595be3ee2082c21247679c
 
 ## Morphling Overview
 

@@ -53,5 +53,5 @@ helm uninstall morphling -n morphling-system
 ## Delete all Morphling CRDs
 
 ```bash
-kubectl get crd | grep tuning.kubedl.io | cut -d ' ' -f 1 | xargs kubectl delete crd
+kubectl get crd | grep morphling.kubedl.io | cut -d ' ' -f 1 | xargs kubectl delete crd
 ```
