@@ -22,9 +22,6 @@ This auto-configuration workflow is developed as an independent project---**Morp
 <img src="logo.png" alt="Morphling Stack" style="width:50%">
 </h1>
 </figure>
-=======
-This auto-configuration workflow is developed as an independent sub project called **Morphling**.   [Github  →](https://github.com/alibaba/morphling)
->>>>>>> 1b2031758640ca595b595be3ee2082c21247679c
 
 ## Morphling Overview
 
