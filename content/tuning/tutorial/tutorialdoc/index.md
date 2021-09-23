@@ -32,7 +32,7 @@ kubectl apply -f examples/experiment/experiment-mobilenet-grid.yaml
 Explanation on the [YAML](https://github.com/kubedl-io/morphling/blob/main/examples/experiment/experiment-mobilenet-grid.yaml)
 
 ```yaml
-apiVersion: "tuning.kubedl.io/v1alpha1"
+apiVersion: "morphling.kubedl.io/v1alpha1"
 kind: ProfilingExperiment
 metadata:
   namespace: morphling-system

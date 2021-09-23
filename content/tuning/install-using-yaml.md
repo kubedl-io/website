@@ -81,8 +81,8 @@ bash script/undeploy.sh
 
 ## Delete CRDs
 
-{{< btn-copy text="kubectl delete crd profilingexperiments.tuning.kubedl.io samplings.tuning.kubedl.io trials.tuning.kubedl.io" >}}
+{{< btn-copy text="kubectl delete crd profilingexperiments.morphling.kubedl.io samplings.morphling.kubedl.io trials.morphling.kubedl.io" >}}
 
 ```bash
-kubectl delete crd profilingexperiments.tuning.kubedl.io samplings.tuning.kubedl.io trials.tuning.kubedl.io
+kubectl delete crd profilingexperiments.morphling.kubedl.io samplings.morphling.kubedl.io trials.morphling.kubedl.io
 ```
