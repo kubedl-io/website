@@ -36,14 +36,14 @@ The official Morphling component images are hosted under [docker hub](https://hu
  kubectl apply -k manifests/algorithm
  ```
 
-To deploy Morphling UI [Go →]({{< ref "tuning/ui" >}}), run
-
+To deploy Morphling UI, run
 
 ```bash
 kubectl apply -k manifests/ui
 ```
+Check the [Morphling UI docs →]({{< ref "tuning/ui" >}})
 
-By default, Morphling will be installed under `morphling-system` namespace.
+By default, Morphling components will be installed under `morphling-system` namespace.
 
 ### Check Installing
 

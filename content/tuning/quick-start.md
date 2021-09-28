@@ -22,28 +22,28 @@ We use grid search for configuration sampling.
 
 
 ```bash
-kubectl -n morphling-system apply -f https://raw.githubusercontent.com/alibaba/morphling/main/examples/experiment/experiment-mobilenet-grid.yaml
+kubectl apply -f https://raw.githubusercontent.com/alibaba/morphling/main/examples/experiment/experiment-mobilenet-grid.yaml
 ```
 
 #### Monitor the tuning experiment status
 
 ```bash
-kubectl get -n morphling-system pe
-kubectl describe -n morphling-system pe
+kubectl get pe
+kubectl describe pe
 ```
 
 #### Monitor sampling trials (performance test)
 
 
 ```bash
-kubectl -n morphling-system get trial
+kubectl get trial
 ```
 
 #### Get the searched optimal configuration
 
 
 ```bash
-kubectl -n morphling-system get pe
+kubectl get pe
 ```
 
 Expected output:
@@ -57,5 +57,5 @@ mobilenet-experiment-grid   Succeeded   5m59s   qps           31                
 
 
 ```bash
-kubectl -n morphling-system delete pe --all
+kubectl delete pe --all
 ```
