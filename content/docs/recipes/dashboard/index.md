@@ -45,7 +45,7 @@ For example, check the dashboard endpoint by inspecting the service object and y
 
 #### Access the Dashboard over SSH
 
-If the dashboard is deployed on a remote machine that requires SSH to access. Run
+If the dashboard is deployed on a remote machine that requires SSH to access. On your local machine, run:
 
 ```
 ssh -L 9090:localhost:9090 30.30.30.30
@@ -61,9 +61,9 @@ Then, on the remote machine, run
 
 This will forward any connections to localhost:9090 (the remote machine you ssh to) to the kubedl-dashboard deployment in Kuberenetes at port 9090
 
-In summary, the connection is flow like below:
+In summary, the connection flow is like below:
 
-Browser -> Local Machine (e.g. your laptop), port 9090 -> Remote Machine, port 9090 -> kubectl forward -> The running pod, port 9090
+Browser -> Local Machine (e.g. your laptop), port 9090 -> Remote Machine, port 9090 -> kubectl forward -> The running dashboard pod, port 9090
 
 ## Development Guide
 
