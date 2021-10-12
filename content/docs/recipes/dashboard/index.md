@@ -48,7 +48,7 @@ For example, check the dashboard endpoint by inspecting the service object and y
 If the dashboard is deployed on a remote machine that requires SSH to access. On your local machine, run:
 
 ```
-ssh -L 9090:localhost:9090 30.30.30.30
+ssh -L 9090:localhost:9090 user@30.30.30.30
 ```
 This will send any browser connection to port 9090 on your local machine(i.e. your laptop), over ssh to the remote machine (30.30.30.30).
 Once there, it will continue to localhost (the remote machine), port 9090.
