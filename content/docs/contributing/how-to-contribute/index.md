@@ -46,7 +46,6 @@ KubeDL code base consists of several components:
 
 {{< img src="codestructure.jpg" alt="code" caption="" class="border-0 rounded-circle">}}
 
-
 ### How to Build
 
 There's a `Makefile` in the root folder which describes the options to build and install. Here are some common ones:
@@ -86,6 +85,24 @@ docker push kubedl/kubedl:v0.3.0
 Generate the helm chart, the helm chart will be generated under [helm/kubedl](https://github.com/kubedl-io/kubedl/tree/master/helm/kubedl)
 ```bash
 make helm-chart
+```
+
+### Add a new CRD
+
+Use `KubeBuilder` to generate a CRD YAML file, for example, below command will generate a new kind `dog` under api group `pet`
+```bash
+kubebuilder create api --group pet --version v1alpha1 --kind dog
+```
+Generate the zz_generated.deepcopy.go file
+```bash
+make generate
+```
+
+Generate the zz_generated.defaults.go file
+```bash
+go get k8s.io/code-generator/cmd/defaulter-gen
+cd apis/
+defaulter-gen -O zz_generated.defaults -i ./pet/... -h ../hack/boilerplate.go.txt
 ```
 
 ### Git Preparation (Skip if you are familiar with Git)
