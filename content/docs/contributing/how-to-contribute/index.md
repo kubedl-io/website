@@ -46,6 +46,12 @@ KubeDL code base consists of several components:
 
 {{< img src="codestructure.jpg" alt="code" caption="" class="border-0 rounded-circle">}}
 
+### Run controller locally
+```bash
+make manager
+./manager --enable-leader-election=false
+```
+
 ### How to Build
 
 There's a `Makefile` in the root folder which describes the options to build and install. Here are some common ones:
