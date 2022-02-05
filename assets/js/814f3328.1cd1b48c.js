@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkubedl_website=self.webpackChunkkubedl_website||[]).push([[2535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"A New Home Page...","permalink":"/blog/openkruise-1.0"}]}')}}]);

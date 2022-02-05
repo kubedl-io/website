@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>KubeDL Blog</title>
+        <link>https://kubedl.io/blog</link>
+        <description>KubeDL Blog</description>
+        <lastBuildDate>Fri, 04 Feb 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[A New Home Page...]]></title>
+            <link>https://kubedl.io/blog/openkruise-1.0</link>
+            <guid>openkruise-1.0</guid>
+            <pubDate>Fri, 04 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We just released a new home page...]]></description>
+            <content:encoded><![CDATA[<p>We just released a new home page...</p>]]></content:encoded>
+            <category>website</category>
+        </item>
+    </channel>
+</rss>

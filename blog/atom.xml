@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://kubedl.io/blog</id>
+    <title>KubeDL Blog</title>
+    <updated>2022-02-04T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://kubedl.io/blog"/>
+    <subtitle>KubeDL Blog</subtitle>
+    <icon>https://kubedl.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[A New Home Page...]]></title>
+        <id>openkruise-1.0</id>
+        <link href="https://kubedl.io/blog/openkruise-1.0"/>
+        <updated>2022-02-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We just released a new home page...]]></summary>
+        <content type="html"><![CDATA[<p>We just released a new home page...</p>]]></content>
+        <author>
+            <name>Jian He</name>
+            <uri>https://github.com/jian-he</uri>
+        </author>
+        <category label="website" term="website"/>
+    </entry>
+</feed>
