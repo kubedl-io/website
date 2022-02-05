@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'kubedl-io', // Usually your GitHub org/user name.
-  projectName: 'kubedl', // Usually your repo name.
+  projectName: 'website', // Usually your website repo name.
 
   presets: [
     [
