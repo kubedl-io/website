@@ -38,6 +38,11 @@ export default function Home() {
       </main>
       <div className={clsx('hero', styles.hero)}>
         <div className="container text--center">
+          <img src="/img/kubedl/kubedldashboard.png" alt="dashboard"/>
+        </div>
+      </div>
+      <div className={clsx('hero', styles.hero)}>
+        <div className="container text--center">
           <h3 className="hero__subtitle">
             <Translate>KubeDL is a Cloud Native Computing Foundation sandbox project</Translate>
           </h3>

@@ -29,16 +29,7 @@ const FeatureList = [
           Automatic tuning of container configurations to maximize runtime and cost efficiency of model serving.
       </>
     ),
-  },
-    {
-        title: 'Cloud Native',
-        Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
-        description: (
-            <>
-                Kubernetes native and leverage cloud to achieve elasticity and efficiency.
-            </>
-        ),
-    },
+  }
 ];
 
 function Feature({Svg, title, description}) {
