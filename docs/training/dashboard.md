@@ -139,16 +139,12 @@ $ go build -o backend-server ./backend/cmd/backend-server/main.go
 
 2. Install dependencies
     ```bash
-    npm install
+    yarn install
     ```
-3. Build Frontend Server
-    ```bash
-    npm run build
-    ```
-4. Start Frontend Server
+3. Start Frontend Server
 
     ```bash
-    npm start
+    yarn start
     ```
 
 #### Optional: Set backend server address
