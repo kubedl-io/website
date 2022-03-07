@@ -25,8 +25,6 @@ spec:
       replicas: 1
       restartPolicy: Never
       template:
-        apiVersion: v1
-        kind: Pod
         spec:
           containers:
             - name: xgboostjob
@@ -47,8 +45,6 @@ spec:
       replicas: 2
       restartPolicy: ExitCode
       template:
-        apiVersion: v1
-        kind: Pod
         spec:
           containers:
             - name: xgboostjob
