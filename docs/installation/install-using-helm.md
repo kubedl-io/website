@@ -13,7 +13,7 @@ brew install helm
 Check the [helm website](https://helm.sh/docs/intro/install/) for more details.
 
 ## Install KubeDL
-From the root directory, run
+From the [project root directory](https://github.com/kubedl-io/kubedl), run
 
 ```bash
 helm install kubedl ./helm/kubedl --create-namespace -n kubedl-system
