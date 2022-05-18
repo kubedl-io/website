@@ -1,0 +1,57 @@
+# Meta Data for SEO
+
+## Homepage
+title = "KubeDL"
+titleSeparator = "-"
+titleAddition = "KubeDL helps you run deep learning workloads on Kubernetes."
+description = "KubeDL is a unififed operator helping you run multiple kinds of deep learning training workloads on Kubernetes."
+
+## Open Graph + Twitter Cards
+images = ["kubedlicon.png"]
+#twitterSite = "henkverlinde"
+#twitterCreator = "henkverlinde"
+#facebookAuthor = "verlinde.henk"
+#facebookPublisher = "verlinde.henk"
+ogLocale = "en_US"
+
+## JSON-LD
+schemaType = "Organization"
+schemaLogo = "kubedlicon.png"
+#schemaTwitter = "https://twitter.com/henkverlinde"
+#schemaLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
+schemaGitHub = "https://github.com/alibaba/kubedl"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+
+# Footer
+# footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+
+# Alert
+alert = false
+alertText = "Like KubeDL? <a class=\"alert-link\" href=\"https://github.com/alibaba/kubedl/stargazers\">Star on GitHub</a>. Thanks!</a>"
+
+# Edit Page
+docsRepo = "https://github.com/jian-he/website"
+editPage = true
+
+[options]
+  lazySizes = true
+  clipBoard = true
+  instantPage = true
+  flexSearch = true
+  darkMode = true
+  bootStrapJs = true
+  breadCrumb = true
+  highLight = true
