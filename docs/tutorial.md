@@ -1,16 +1,21 @@
+---
+sidebar_position: 7
+---
 
-This tutorial will walk through [KubeDL Training](docs/training/intro.md), [KubeDL Model](docs/model/intro.md) and [KubeDL Serving](docs/serving/intro.md) concepts.
+# Tutorial
+
+This tutorial will walk through [KubeDL Training](training/intro), [KubeDL Model](model/intro) and [KubeDL Serving](serving/intro) concepts.
 
 ## Install KubeDL
 
-Follow the instructions to install KubeDL. [Go →](docs/installation/install-using-yaml.md)
+Follow the instructions to install KubeDL. [Go →](installation/install-using-yaml)
 
 ## Setup docker credential
 
 The docker credential is required for KubeDL Model to store the model image.
 This step is not needed if you don't use KubeDL model. This tutorial will use it.
 
-Follow the setup instruction to setup docker credential. [Go →](docs/model/setup.md)
+Follow the setup instruction to setup docker credential. [Go →](model/setup)
 
 ## Run a job to train a model
 
@@ -67,7 +72,7 @@ create an image that includes those model artifacts and push that to the dockerh
 Notes：
 1. `modelVersion` field defines where the modelVersion is stored. Currently, local hostpath and NFS are supported.
 2. `mountPath` defines the path where the external storage is mounted. The training code should export the model artifacts such as the TensorFlow saved_model under this path.
-Check the [documentation](docs/model/usage.md) for more details
+Check the [documentation](model/usage) for more details
 
 
 ## Inspect the job
@@ -86,7 +91,7 @@ The naming convention of the ModelVersion is to prepend the `mv` to the job name
 
 ## Inspect the model version
 
-There are [`Model` and `ModelVersion`](docs/model/intro.md) . In short, `Model` associates with multiple `ModelVersion`s.
+There are [`Model` and `ModelVersion`](model/intro) . In short, `Model` associates with multiple `ModelVersion`s.
 
 Inspect the model version
 
