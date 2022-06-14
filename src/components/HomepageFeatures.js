@@ -4,7 +4,7 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Multi Framework',
+    title: 'Various ML Framework Support ',
     Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
@@ -13,11 +13,11 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Model Versioning and Lineage',
+    title: 'Model Package, Deployment and Tracking',
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-          Manage and track a model version and lineage from the model generation to deployments natively in Kubernetes.
+          Package and deploy with container, tracking model lineage natively in Kubernetes CRD.
       </>
     ),
   },
