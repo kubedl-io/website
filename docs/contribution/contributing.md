@@ -101,6 +101,19 @@ cd apis/
 defaulter-gen -O zz_generated.defaults -i ./pet/... -h ../hack/boilerplate.go.txt
 ```
 
+## Debugging
+
+### Get KubeDL Controller Pod Logs
+
+```bash
+kubectl logs kubedl-controller-manager-0 -n kubedl-system
+```
+
+### Get KubeDL Controller Pod status
+
+```bash
+kubectl describe pod kubedl-controller-manager-0 -n kubedl-system
+```
 ### Git Preparation (Skip if you are familiar with Git)
 
 To put forward a PR, we assume you have registered a GitHub ID.
