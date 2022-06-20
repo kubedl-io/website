@@ -42,6 +42,12 @@ kubectl delete namespace kubedl-system
 kubectl get crd | grep kubedl.io | cut -d ' ' -f 1 | xargs kubectl delete crd
 ```
 
+## Delete ClusterRole and ClusterRoleBindings
+```
+kubectl delete clusterrole kubedl-leader-election-role
+kubectl delete clusterrolebinding kubedl-manager-rolebinding
+```
+
 ## Enable specific job Kind
 
 KubeDL supports all kinds of jobs(tensorflow, pytorch etc.) in a single Kubernetes operator. You can selectively enable the kind of jobs to support.
