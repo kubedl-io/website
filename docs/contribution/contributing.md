@@ -13,7 +13,7 @@ Please also take a look at our code of conduct, which details how contributors a
 As a contributor, if you want to make any contribution to KubeDL project, we should reach an agreement on the version of tools used in the development environment.
 Here are some dependents with specific version:
 
-- Golang : v1.13+ (1.14 is best)
+- Golang : v1.13+ 
 - Kubernetes: v1.12+
 
 
@@ -45,6 +45,11 @@ There's a `Makefile` in the root folder which describes the options to build and
 ```bash
 make manager
 ```
+If you run into any issues, try downloading the latest version of controller-gen command tools
+```
+go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.6.1
+```
+
 #### Run controller locally
 ```bash
 make manager # This command generates a binary called manager
@@ -101,6 +106,19 @@ cd apis/
 defaulter-gen -O zz_generated.defaults -i ./pet/... -h ../hack/boilerplate.go.txt
 ```
 
+## Debugging
+
+### Get KubeDL Controller Pod Logs
+
+```bash
+kubectl logs kubedl-controller-manager-0 -n kubedl-system
+```
+
+### Get KubeDL Controller Pod status
+
+```bash
+kubectl describe pod kubedl-controller-manager-0 -n kubedl-system
+```
 ### Git Preparation (Skip if you are familiar with Git)
 
 To put forward a PR, we assume you have registered a GitHub ID.

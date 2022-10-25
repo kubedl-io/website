@@ -8,7 +8,7 @@ sidebar_position: 5
 
 Network bandwidth is a bottleneck resource for communication-intensive jobs. Host mode networking can be useful to optimize
 performance. In addition, other scenarios (e.g: nvlink communications between containerized gpu processes) may depend on
-host-network as well.
+host network as well.
 
 ## How To Use
 

@@ -10,17 +10,3 @@ or using below QR code:
 
 ![dingtalk](/img/contributing/dingtalk.jpg)
 
-
-## Commands
-
-### Get KubeDL Controller Pod Logs
-
-```bash
-kubectl logs kubedl-controller-manager-0 -n kubedl-system
-```
-
-### Get KubeDL Controller Pod status
-
-```bash
-kubectl describe pod kubedl-controller-manager-0 -n kubedl-system
-```
